@@ -7,8 +7,6 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-import fr.adaming.model.Categorie;
 import fr.adaming.model.Produit;
 
 /**
