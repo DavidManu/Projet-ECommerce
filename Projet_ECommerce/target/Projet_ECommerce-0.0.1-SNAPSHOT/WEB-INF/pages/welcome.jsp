@@ -6,8 +6,45 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<link href='<c:url value="/resources/css/creative.min.css" />' rel="stylesheet">
+<link href='<c:url value="/resources/vendor/bootstrap/css/bootstrap.min.css" />' rel="stylesheet">
+<link href='<c:url value="/resources/vendor/font-awesome/css/font-awesome.min.css" />' rel="stylesheet" type="text/css">
+<link href='<c:url value="/resources/vendor/magnific-popup/magnific-popup.css" />' rel="stylesheet">
 </head>
 <body>
+
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">Start Bootstrap</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a class="page-scroll" href="#about">About</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#services">Services</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#portfolio">Portfolio</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
 	<h1>
 		Pages concernant Admin categorie et produit: <a
 			href="${pageContext.request.contextPath}/authentication/adminCatProd/adminCatProdPage">Cliquer
