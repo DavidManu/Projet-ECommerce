@@ -1,8 +1,5 @@
 package fr.adaming.model;
 
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,7 +8,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -28,7 +24,7 @@ public class Produit {
 	private double prix;
 	private int quantite;
 	private boolean selectionne;
-	private String photo;
+	private byte[] photo;
 
 	// association
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -54,7 +50,7 @@ public class Produit {
 	 * @param photo
 	 */
 	public Produit(String designation, String description, double prix, int quantite, boolean selectionne,
-			String photo) {
+			byte[] photo) {
 		super();
 		this.designation = designation;
 		this.description = description;
@@ -76,7 +72,7 @@ public class Produit {
 	 * @param photo
 	 */
 	public Produit(Long idProduit, String designation, String description, double prix, int quantite,
-			boolean selectionne, String photo) {
+			boolean selectionne, byte[] photo) {
 		super();
 		this.idProduit = idProduit;
 		this.designation = designation;
@@ -181,7 +177,7 @@ public class Produit {
 	/**
 	 * @return the photo
 	 */
-	public String getPhoto() {
+	public byte[] getPhoto() {
 		return photo;
 	}
 
@@ -189,7 +185,7 @@ public class Produit {
 	 * @param photo
 	 *            the photo to set
 	 */
-	public void setPhoto(String photo) {
+	public void setPhoto(byte[] photo) {
 		this.photo = photo;
 	}
 
