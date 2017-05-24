@@ -11,7 +11,7 @@
 	<context:annotation-config />
 
 	<!-- delimitation du scan pour les entitees -->
-	<context:component-scan base-package="fr.adaming.model" />
+	<context:component-scan base-package="fr.adaming" />
 
 	<!-- declaration du bean dataSource -->
 	<context:property-placeholder location="classpath*:data-source.properties" />
