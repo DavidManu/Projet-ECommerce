@@ -1,0 +1,4 @@
+fr\adaming\model\Role.class
+fr\adaming\controllers\LoginController.class
+fr\adaming\model\Admin.class
+fr\adaming\controllers\AuthenticationControllerd.class
