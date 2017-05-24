@@ -27,7 +27,7 @@ public class Role {
 	private List<Admin> listUsers;
 
 	/**
-	 * 
+	 * constructeur vide
 	 */
 	public Role() {
 		super();
