@@ -1,10 +1,10 @@
-package fr.adaming.dao;
+package fr.adaming.service;
 
 import java.util.List;
 
 import fr.adaming.model.Produit;
 
-public interface IProduitDao {
+public interface IProduitService {
 
 	public List<Produit> getAllProduit();
 
@@ -15,4 +15,5 @@ public interface IProduitDao {
 	public void deleteProduit(Produit p);
 
 	public void updateProduit(Produit p);
+
 }

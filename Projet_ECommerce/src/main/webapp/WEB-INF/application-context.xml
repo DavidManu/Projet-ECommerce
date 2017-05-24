@@ -44,38 +44,6 @@
 	</bean>
 	<tx:annotation-driven transaction-manager="transactionManagerBean" />
 
-	<!-- declaration des URL protégées -->
-	<security:http>
-		<!-- Les URL protégées et les autorisations -->
-		<security:intercept-url pattern="/authentication/adminCatProd/**"
-			access="ROLE_ADMIN_CAT" />
-		<security:intercept-url pattern="/authentication/adminProd/**"
-			access="ROLE_ADMIN_PROD" />
-
-		<!-- formulaire -->
-		<security:form-login login-page="/login"
-			authentication-failure-url="/echec" />
-
-		<!-- Pour se deconnecter -->
-		<security:logout logout-success-url="/logout" />
-
-		<!-- Pour les acces non autorisés -->
-		<security:access-denied-handler
-			error-page="/denied" />
-	</security:http>
-
-	<!-- declaration des authentification -->
-	<security:authentication-manager>
-		<security:authentication-provider>
-			<!-- Utilisation de la base de données pour récupérer l'identifiant, le 
-				mdp et Roles -->
-			<security:jdbc-user-service
-				data-source-ref="dataSourceBean"
-				users-by-username-query="select userName,password,actived,role_id from admins where userName=?"
-				authorities-by-username-query="select a.userName,r.roleName from admins a,roles r where a.role_id=r.id_r and a.userName=?" />
-			<!-- users-by-username-query pour l'authentification -->
-			<!-- authorities-by-username-query pour l'autorisation -->
-		</security:authentication-provider>
-	</security:authentication-manager>
+	
 
 </beans>
