@@ -12,8 +12,8 @@ public interface ICategorieDao {
 	
 	public Categorie createCategorie(Categorie c);
 	
-	public void deleteCategorie(Categorie c);
+	public String deleteCategorie(long id);
 	
-	public void updateCategorie(Categorie c);
+	public Categorie updateCategorie(long id);
 
 }

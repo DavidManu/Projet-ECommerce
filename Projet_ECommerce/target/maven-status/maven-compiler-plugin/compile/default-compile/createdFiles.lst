@@ -14,6 +14,7 @@ fr\adaming\dao\ProduitDaoImpl.class
 fr\adaming\service\IProduitService.class
 fr\adaming\controllers\AuthenticationController.class
 fr\adaming\model\Admin.class
+fr\adaming\controllers\CategorieController.class
 fr\adaming\model\Categorie.class
 fr\adaming\dao\ICategorieDao.class
 fr\adaming\controllers\ProduitController.class

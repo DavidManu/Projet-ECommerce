@@ -14,10 +14,13 @@
 	<h1 style="text-align: center">${msg}</h1>
 	<h3 style="text-align: center">Bienvenue : ${nomAdminCatProd}</h3>
 
-	<h3 href="categorie.jsp">Gerer les categories</h3>
+	<h3>
+		<a href="${pageContext.request.contextPath}/categorie/categorieAdmin">Gerer
+			les categories</a>
+	</h3>
 	<h3>
 		<a href="${pageContext.request.contextPath}/produit/produitAdmin">Gerer
-			les produit</a>
+			les produits</a>
 	</h3>
 
 	<a href="<c:url value="/j_spring_security_logout"/>">Se deconnecter</a>

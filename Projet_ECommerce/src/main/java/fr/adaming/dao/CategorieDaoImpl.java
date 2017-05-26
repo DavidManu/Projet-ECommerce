@@ -70,7 +70,7 @@ public class CategorieDaoImpl implements ICategorieDao {
 		Session s = sf.getCurrentSession();
 
 		Categorie cat_rec = (Categorie) s.get(Categorie.class, c.getIdCategorie());
-		return null;
+		return cat_rec;
 	}
 
 	/**
@@ -87,9 +87,11 @@ public class CategorieDaoImpl implements ICategorieDao {
 	 * Supprimer une categorie
 	 */
 	@Override
-	public void deleteCategorie(Categorie c) {
+	public String deleteCategorie(long id) {
 		Session s = sf.getCurrentSession();
-		s.delete(c);
+		Categorie c_rec = (Categorie) s.get(Categorie.class, id);
+		s.delete(c_rec);
+		return null;
 
 	}
 
@@ -97,11 +99,11 @@ public class CategorieDaoImpl implements ICategorieDao {
 	 * Modifier une categorie
 	 */
 	@Override
-	public void updateCategorie(Categorie c) {
+	public Categorie updateCategorie(long id) {
 		Session s = sf.getCurrentSession();
-		Categorie cat_rec = (Categorie) s.get(Categorie.class, c.getIdCategorie());
-		c = cat_rec;
-		s.merge(c);
+		Categorie cat_rec = (Categorie) s.get(Categorie.class, id);
+		s.update(cat_rec);
+		return cat_rec;
 	}
 
 }

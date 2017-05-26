@@ -100,17 +100,21 @@ public class ProduitController {
 	 */
 
 	@RequestMapping(value = "/edit", method = RequestMethod.GET)
-	public ModelAndView affichFormEdit(@RequestParam("idProduit") Produit p) {
+	public ModelAndView affichFormEdit(@RequestParam("idProduit") long id) {
 
+		Produit p = new Produit();
+		p.setIdProduit(id);
 		Produit p_rec = produitService.getOneProduit(p);
-		String viewName = "ajouter";
+		String viewName = "afficheCreateProduitForm";
 
 		return new ModelAndView(viewName, "mProduit", p_rec);
 	}
 
 	@RequestMapping(value = "/delete/{idProduit}", method = RequestMethod.GET)
-	public String supprimerProduit(ModelMap model, @PathVariable("idProduit") Produit p) {
+	public String supprimerProduit(ModelMap model, @PathVariable("idProduit") long id) {
 
+		Produit p = new Produit();
+		p.setIdProduit(id);
 		Produit p_rec = produitService.getOneProduit(p);
 		produitService.deleteProduit(p_rec.getIdProduit());
 		model.addAttribute("pListe", produitService.getAllProduit());

@@ -65,13 +65,13 @@ public class CategorieServiceImpl implements ICategorieService {
 	}
 
 	@Override
-	public void deleteCategorie(Categorie c) {
-		categorieDao.deleteCategorie(c);
+	public String deleteCategorie(long id) {
+		return categorieDao.deleteCategorie(id);
 	}
 
 	@Override
-	public void updateCategorie(Categorie c) {
-		categorieDao.updateCategorie(c);
+	public Categorie updateCategorie(long id) {
+		return categorieDao.updateCategorie(id);
 	}
 
 }
