@@ -64,14 +64,14 @@ public class ProduitServiceImpl implements IProduitService {
 	}
 
 	@Override
-	public void deleteProduit(Produit p) {
-		produitDao.deleteProduit(p);
+	public String deleteProduit(long id) {
+		return produitDao.deleteProduit(id);
 
 	}
 
 	@Override
-	public void updateProduit(Produit p) {
-		produitDao.updateProduit(p);
+	public Produit updateProduit(long id) {
+		return produitDao.updateProduit(id);
 
 	}
 

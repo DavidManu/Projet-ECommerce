@@ -22,7 +22,7 @@
 				<th>Description</th>
 				<th>Photo</th>
 				<th>Commande</th>
-				
+
 			</tr>
 			<c:forEach var="produit" items="${pListe}">
 				<tr>
@@ -34,7 +34,11 @@
 					<td>${produit.quantite}</td>
 					<td>${produit.description}</td>
 					<td>${produit.photo}</td>
-<%-- 					<td>${}</td> --%>
+					<td><a
+						href="${pageContext.request.contextPath}/produit/delete/${produit.idProduit}">Supprimer</a>
+						| <a
+						href="${pageContext.request.contextPath}/produit/edit?idProduit=${produit.idProduit}">Editer</a></td>
+					<%-- 					<td>${}</td> --%>
 
 					<%-- <td><a href="${pageContext.request.contextPath}/personne/delete/${personne.id}">Ajouter au pannier</a></td> --%>
 				</tr>

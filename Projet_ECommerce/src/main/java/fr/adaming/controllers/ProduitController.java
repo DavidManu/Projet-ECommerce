@@ -7,8 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import fr.adaming.model.Produit;
@@ -94,7 +96,26 @@ public class ProduitController {
 	}
 
 	/**
-	 * Supprimer un produit à liste de produits
+	 * modifier un produit à liste de produits
 	 */
-	
+
+	@RequestMapping(value = "/edit", method = RequestMethod.GET)
+	public ModelAndView affichFormEdit(@RequestParam("idProduit") Produit p) {
+
+		Produit p_rec = produitService.getOneProduit(p);
+		String viewName = "ajouter";
+
+		return new ModelAndView(viewName, "mProduit", p_rec);
+	}
+
+	@RequestMapping(value = "/delete/{idProduit}", method = RequestMethod.GET)
+	public String supprimerProduit(ModelMap model, @PathVariable("idProduit") Produit p) {
+
+		Produit p_rec = produitService.getOneProduit(p);
+		produitService.deleteProduit(p_rec.getIdProduit());
+		model.addAttribute("pListe", produitService.getAllProduit());
+
+		return "produits";
+	}
+
 }

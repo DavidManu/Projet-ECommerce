@@ -46,7 +46,7 @@
 		<input type="submit" value="Ajouter un Produit" />
 	</form:form>
 
-	<a href="${pageContext.request.contextPath}/produit/listeProduits">Page
+	<a href="${pageContext.request.contextPath}/produit//listeProduit">Page
 		d'acceuil</a>
 </body>
 </html>
