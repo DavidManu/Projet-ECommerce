@@ -104,10 +104,11 @@ public class ProduitController {
 
 		Produit p = new Produit();
 		p.setIdProduit(id);
-		Produit p_rec = produitService.getOneProduit(p);
+		Produit p_rec = this.produitService.getOneProduit(p);
+		Produit p_modif = produitService.updateProduit(p_rec.getIdProduit());
 		String viewName = "afficheCreateProduitForm";
 
-		return new ModelAndView(viewName, "mProduit", p_rec);
+		return new ModelAndView(viewName, "mProduit", p_modif);
 	}
 
 	@RequestMapping(value = "/delete/{idProduit}", method = RequestMethod.GET)
