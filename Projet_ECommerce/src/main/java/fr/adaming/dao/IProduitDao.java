@@ -2,6 +2,7 @@ package fr.adaming.dao;
 
 import java.util.List;
 
+
 import fr.adaming.model.Produit;
 
 public interface IProduitDao {
@@ -12,7 +13,9 @@ public interface IProduitDao {
 
 	public Produit createProduit(Produit p);
 
-	public void deleteProduit(Produit p);
+	public String deleteProduit(long id);
 
-	public void updateProduit(Produit p);
+	public Produit updateProduit(long id);
+	
+	
 }

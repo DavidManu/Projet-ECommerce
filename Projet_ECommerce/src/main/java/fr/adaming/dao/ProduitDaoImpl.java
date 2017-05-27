@@ -7,8 +7,6 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-import fr.adaming.model.Categorie;
 import fr.adaming.model.Produit;
 
 /**
@@ -71,7 +69,7 @@ public class ProduitDaoImpl implements IProduitDao {
 		Session s = sf.getCurrentSession();
 
 		Produit produit_rec = (Produit) s.get(Produit.class, p.getIdProduit());
-		return null;
+		return produit_rec;
 	}
 
 	/**
@@ -88,9 +86,11 @@ public class ProduitDaoImpl implements IProduitDao {
 	 * Supprimer un produit
 	 */
 	@Override
-	public void deleteProduit(Produit p) {
+	public String deleteProduit(long id) {
 		Session s = sf.getCurrentSession();
-		s.delete(p);
+		Produit produit_rec = (Produit) s.get(Produit.class, id);
+		s.delete(produit_rec);
+		return null;
 
 	}
 
@@ -98,11 +98,11 @@ public class ProduitDaoImpl implements IProduitDao {
 	 * Modifier un produit
 	 */
 	@Override
-	public void updateProduit(Produit p) {
+	public Produit updateProduit(long id) {
 		Session s = sf.getCurrentSession();
-		Produit produit_rec = (Produit) s.get(Produit.class, p.getIdProduit());
-		p = produit_rec;
-		s.merge(p);
+		Produit produit_rec = (Produit) s.get(Produit.class, id);
+		s.update(produit_rec);
+		return produit_rec;
 	}
 
 }
