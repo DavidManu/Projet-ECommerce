@@ -62,9 +62,8 @@ public class ProduitController {
 	/**
 	 * Generation de la liste de produits
 	 */
-	@RequestMapping(value = "/listeProduit", method = RequestMethod.GET)
+	@RequestMapping(value = "/listeproduits", method = RequestMethod.GET)
 	public String afficherListeProduits(ModelMap model) {
-
 		List<Produit> listeProduits = produitService.getAllProduit();
 		model.addAttribute("pListe", listeProduits);
 		return "produits";

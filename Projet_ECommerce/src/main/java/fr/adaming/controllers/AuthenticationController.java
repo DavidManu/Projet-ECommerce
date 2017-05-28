@@ -23,8 +23,7 @@ public class AuthenticationController {
 
 	@Autowired
 	private IProduitService produitService;
-	
-	
+
 	/**
 	 * @return the produitService
 	 */
@@ -33,48 +32,47 @@ public class AuthenticationController {
 	}
 
 	/**
-	 * @param produitService the produitService to set
+	 * @param produitService
+	 *            the produitService to set
 	 */
 	public void setProduitService(IProduitService produitService) {
 		this.produitService = produitService;
 	}
-		
+
 	/**
 	 * @return the pService
 	 */
-	@RequestMapping( method = RequestMethod.GET)//value="/welcome",
+	@RequestMapping(method = RequestMethod.GET) // value="/welcome",
 	public String goToWelcomePage(ModelMap model) {
-		List<Produit> listeProduits=produitService.getAllProduit();
+		List<Produit> listeProduits = produitService.getAllProduit();
 		model.addAttribute("pListe", listeProduits);
 		return "welcome";
 	}
-	
-//	/**
-//	 * @return the pService
-//	 */
-//	@RequestMapping( method = RequestMethod.GET)
-//	public String getBasket(ModelMap model) {
-//		Map<Integer, Integer> mapPanier=new HashMap<Integer, Integer>();
-//		model.addAttribute("panierMap", mapPanier);
-//		return "welcome";
-//	}
-//	
-//	@RequestMapping( method = RequestMethod.GET)
-//	public String addToBasket(ModelMap model) {
-//		Map<Integer, Integer> mapPanier=new HashMap<Integer, Integer>();
-//		model.addAttribute("panierMap", mapPanier);
-//		return "welcome";
-//	}	
+
+	// /**
+	// * @return the pService
+	// */
+	// @RequestMapping( method = RequestMethod.GET)
+	// public String getBasket(ModelMap model) {
+	// Map<Integer, Integer> mapPanier=new HashMap<Integer, Integer>();
+	// model.addAttribute("panierMap", mapPanier);
+	// return "welcome";
+	// }
+	//
+	// @RequestMapping( method = RequestMethod.GET)
+	// public String addToBasket(ModelMap model) {
+	// Map<Integer, Integer> mapPanier=new HashMap<Integer, Integer>();
+	// model.addAttribute("panierMap", mapPanier);
+	// return "welcome";
+	// }
 
 	@RequestMapping(value = "/adminCatProd/adminCatProdPage", method = RequestMethod.GET)
 	public String goToAdminCatProdPage(ModelMap model) {
 		// Récuperer l'admin cat qui vient de se connecter
-		Authentication auth = SecurityContextHolder.getContext()
-				.getAuthentication();
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String nom = auth.getName();
 		model.addAttribute("nomAdminCatProd", nom);
-		model.addAttribute(
-				"msg",
+		model.addAttribute("msg",
 				"Bonjour Mr. l'administrateur vous avez les droits d'édition des catégories et des produit");
 		return "adminCatProd";
 	}
@@ -82,12 +80,10 @@ public class AuthenticationController {
 	@RequestMapping(value = "/adminProd/adminProdPage", method = RequestMethod.GET)
 	public String affichePageUser(ModelMap model) {
 		// Récuperer l'admin prod qui vient de se connecter
-		Authentication auth = SecurityContextHolder.getContext()
-				.getAuthentication();
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String nom = auth.getName();
 		model.addAttribute("nomAdminProd", nom);
-		model.addAttribute("msg",
-				"Bonjour Mr. l'administrateur vous avez le droit d'édition des produit");
+		model.addAttribute("msg", "Bonjour Mr. l'administrateur vous avez le droit d'édition des produit");
 		return "adminProd";
 	}
 }

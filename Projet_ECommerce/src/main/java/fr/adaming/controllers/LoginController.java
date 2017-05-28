@@ -10,18 +10,18 @@ public class LoginController {
 
 	@RequestMapping(value="/login",method=RequestMethod.GET)
 	public String affichePageLogin(){
-		return "login";
+		return "adminCatProd";
 	}
 	
 	@RequestMapping(value="/logout",method=RequestMethod.GET)
 	public String logoutMethode(){
-		return "welcome";
+		return "adminCatProdPage";
 	}
 	
 	
 	@RequestMapping(value="/denied",method=RequestMethod.GET)
 	public String deniedMethode(){
-		return "denied";
+		return "adminCatProdPage";
 	}
 	
 	@RequestMapping(value="/echec",method=RequestMethod.GET)

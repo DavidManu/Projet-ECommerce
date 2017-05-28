@@ -102,7 +102,7 @@ public class CategorieDaoImpl implements ICategorieDao {
 	public Categorie updateCategorie(long id) {
 		Session s = sf.getCurrentSession();
 		Categorie cat_rec = (Categorie) s.get(Categorie.class, id);
-		s.update(cat_rec);
+		s.merge(cat_rec);
 		return cat_rec;
 	}
 
