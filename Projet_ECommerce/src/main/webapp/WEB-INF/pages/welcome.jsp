@@ -30,7 +30,7 @@
 <body style="background-image: url('./resources/image/whitebrick.jpg');">
 
 	<nav id="mainNav" class="navbar navbar-default navbar-fixed-top"
-		style="background-color: brown; box-shadow: 10px 10px 5px #888888">
+		style="background-color: #662200; box-shadow: 10px 10px 5px #888888; ">
 		<div class="container-fluid">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
@@ -40,7 +40,7 @@
 <!-- 						class="fa fa-bars"></i> -->
 <!-- 				</button> -->
 				<a class="navbar-brand page-scroll"
-					href="${pageContext.request.contextPath}/authentication"> Shop
+					href="${pageContext.request.contextPath}/authentication" style="color: white; font-weight: bold;"> Shop
 				</a>
 			</div>
 
@@ -48,17 +48,17 @@
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a class="page-scroll" href="#about">About</a></li>
+					<li><a class="page-scroll" href="#about" style="color: white; font-weight: bold;">About</a></li>
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" id="navbarDropdownMenuLink"
-						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white; font-weight: bold;">
 							Login </a>
 						<div class="dropdown-menu"
 							aria-labelledby="navbarDropdownMenuLink">
 							<a class="dropdown-item"
-								href="${pageContext.request.contextPath}/authentication/adminCatProd/adminCatProdPage">As
+								href="${pageContext.request.contextPath}/authentication/adminCatProd/adminCatProdPage" style="background-color: #662200; color: white; font-weight: bold;">As
 								general admin</a> <br /> <a class="dropdown-item"
-								href="${pageContext.request.contextPath}/authentication/adminProd/adminProdPage">As
+								href="${pageContext.request.contextPath}/authentication/adminProd/adminProdPage" style="background-color: #662200; color: white; font-weight: bold;">As
 								product admin</a>
 						</div></li>
 				</ul>
@@ -97,18 +97,19 @@
 
 		<br /> <br />
 		<h4>Voici les produits disponibles:</h4>
-		<table class="table" style="background-color: white">
-			<tr>
+		<table width="100%" cellpadding="6" style="background-color: white">
+			<tr style="background-color: #662200; color: white; text-align: center">
 				<th>Selection</th>
 				<th>ID</th>
 				<th>Categorie</th>
 				<th>Designation</th>
 				<th>Prix</th>
+				<th>Quantite</th>
 				<th>Description</th>
 				<th>Photo</th>
-				<th>Operation</th>
-			</tr>
+				<th>Commande</th>
 
+			</tr>
 			<c:forEach var="produit" items="${pListe}">
 				<tr>
 					<td>${produit.selectionne}</td>
@@ -116,15 +117,16 @@
 					<td>${produit.categorie.idCategorie}</td>
 					<td>${produit.designation}</td>
 					<td>${produit.prix}</td>
+					<td>${produit.quantite}</td>
 					<td>${produit.description}</td>
 					<td>${produit.photo}</td>
-
 					<td><a
 						href="${pageContext.request.contextPath}/produit/addToBasket/${personne.id}"
 						class="btn btn-default btn-xl sr-button">Ajouter au pannier</a></td>
 				</tr>
 			</c:forEach>
 		</table>
+
 	</div>
 
 	<!-- pannier -->
@@ -157,7 +159,7 @@
 	</div>
 
 
-	<div class="navbar-fixed-bottom" style="background-color: #ffe6e6; box-shadow: 10px 10px 5px #888888">
+	<div class="navbar-fixed-bottom" style="background-color: #662200; box-shadow: 10px 10px 5px #888888; color: white; font-weight: bold;">
 		<div class="text-center center-block">
 			<br />
 			<p class="txt-railway" style="font-weight: bold">Contact us</p>
