@@ -49,22 +49,22 @@ public class AuthenticationController {
 		return "welcome";
 	}
 	
-	/**
-	 * @return the pService
-	 */
-	@RequestMapping( method = RequestMethod.GET)
-	public String getBasket(ModelMap model) {
-		Map<Integer, Integer> mapPanier=new HashMap<Integer, Integer>();
-		model.addAttribute("panierMap", mapPanier);
-		return "welcome";
-	}
-	
-	@RequestMapping( method = RequestMethod.GET)
-	public String addToBasket(ModelMap model) {
-		Map<Integer, Integer> mapPanier=new HashMap<Integer, Integer>();
-		model.addAttribute("panierMap", mapPanier);
-		return "welcome";
-	}	
+//	/**
+//	 * @return the pService
+//	 */
+//	@RequestMapping( method = RequestMethod.GET)
+//	public String getBasket(ModelMap model) {
+//		Map<Integer, Integer> mapPanier=new HashMap<Integer, Integer>();
+//		model.addAttribute("panierMap", mapPanier);
+//		return "welcome";
+//	}
+//	
+//	@RequestMapping( method = RequestMethod.GET)
+//	public String addToBasket(ModelMap model) {
+//		Map<Integer, Integer> mapPanier=new HashMap<Integer, Integer>();
+//		model.addAttribute("panierMap", mapPanier);
+//		return "welcome";
+//	}	
 
 	@RequestMapping(value = "/adminCatProd/adminCatProdPage", method = RequestMethod.GET)
 	public String goToAdminCatProdPage(ModelMap model) {
