@@ -1,12 +1,14 @@
 package fr.adaming.model;
 
+import java.util.List;
+
 public class Panier {
 
 	// attributs
 	private double total;
 
 	// association
-	private LigneCommande ligneCommandes;
+	private List<LigneCommande> listLigneCommandes;
 
 	// contructeurs
 	/**
@@ -29,13 +31,6 @@ public class Panier {
 	// getters setters
 
 	/**
-	 * @return the ligneCommandes
-	 */
-	public LigneCommande getLigneCommandes() {
-		return ligneCommandes;
-	}
-
-	/**
 	 * @return the total
 	 */
 	public double getTotal() {
@@ -51,11 +46,18 @@ public class Panier {
 	}
 
 	/**
-	 * @param ligneCommandes
-	 *            the ligneCommandes to set
+	 * @return the listLigneCommandes
 	 */
-	public void setLigneCommandes(LigneCommande ligneCommandes) {
-		this.ligneCommandes = ligneCommandes;
+	public List<LigneCommande> getListLigneCommandes() {
+		return listLigneCommandes;
+	}
+
+	/**
+	 * @param listLigneCommandes
+	 *            the listLigneCommandes to set
+	 */
+	public void setListLigneCommandes(List<LigneCommande> listLigneCommandes) {
+		this.listLigneCommandes = listLigneCommandes;
 	}
 
 	// toString
@@ -66,7 +68,7 @@ public class Panier {
 	 */
 	@Override
 	public String toString() {
-		return "Panier [total=" + total + ", ligneCommandes=" + ligneCommandes + "]";
+		return "Panier [total=" + total + "]";
 	}
 
 }

@@ -115,8 +115,8 @@ public class AuthenticationController {
 //	
 
 	@RequestMapping(value = "/ajouterLigneCommande", method = RequestMethod.POST)
-	public String addLigneCommande(@ModelAttribute("mLigneCommande") LigneCommande pLigneCommande, ModelMap model, BindingResult result)
-			throws Exception {//, @ModelAttribute("monPannier") Panier monPannier
+	public String addLigneCommande(@ModelAttribute("mLigneCommande") LigneCommande pLigneCommande, ModelMap model, BindingResult result, @ModelAttribute("monPannier") Panier monPannier)
+			throws Exception {//
 		System.out.println("je rentre dans addligne");
 
 		if (result.hasErrors()) {
@@ -125,9 +125,9 @@ public class AuthenticationController {
 			System.out.println("je suis dans le else");
 			LigneCommande lc_rec=ligneCommandeService.createLigneCommande(pLigneCommande);
 			System.out.println(lc_rec);
-//			monPannier.getListLigneCommandes().add(lc_rec);
-//			List<LigneCommande> listeLigneCommandes = monPannier.getListLigneCommandes();
-//			model.addAttribute("lcListe", listeLigneCommandes);
+			monPannier.getListLigneCommandes().add(lc_rec);
+			List<LigneCommande> listeLigneCommandes = monPannier.getListLigneCommandes();
+			model.addAttribute("lcListe", listeLigneCommandes);
 			return "welcome";
 		}
 	}
