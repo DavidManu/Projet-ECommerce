@@ -28,7 +28,8 @@
 
 </head>
 
-<body style="background-image: url('/resources/image/whitebrick.jpg')">
+<body >
+<div style="background-image: url('/resources/image/whitebrick.jpg')">
 
 	<nav id="mainNav" class="navbar navbar-default navbar-fixed-top"
 		style="background-color: #662200; box-shadow: 10px 10px 5px #888888;">
@@ -112,8 +113,7 @@
 				<option data-icon="glyphicon-heart">Livres</option>
 			</select>
 		</form>
-		<div align="center"
-			style="background-image: url('./resources/image/whitebrick.jpg')">
+		<div >
 			<br /> <br />
 			<h3>
 
@@ -199,5 +199,6 @@
 
 	<!-- Theme JavaScript -->
 	<script src='<c:url value="/resources/js/creative.min.js" />'></script>
+	</div>
 </body>
 </html>

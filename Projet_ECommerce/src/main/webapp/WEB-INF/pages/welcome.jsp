@@ -60,9 +60,7 @@
 							<form action="j_spring_security_check" method="post">
 
 								Login: <input type="text" name="j_username" /> <br /> Mot de
-								passe: <input type="text" name="j_password" /> <br /> <input
-									type="submit" value="se connecter">
-
+								passe: <input type="text" name="j_password" /> <br />
 							</form>
 							<c:if test="${not empty erreur}">
 								<h1 style="color: red">Tu t'es trompé sur le Login ou Mdp

@@ -58,7 +58,7 @@
 							<div class="dropdown-menu"
 								aria-labelledby="navbarDropdownMenuLink">
 
-								<form action="j_spring_security_check" method="post">
+								<form action="j_spring_security_check" method="post" style="text-align:center">
 
 									Login: <input type="text" name="j_username" /> <br /> Mot de
 									passe: <input type="text" name="j_password" /> <br /> <input
@@ -66,8 +66,7 @@
 
 								</form>
 								<c:if test="${not empty erreur}">
-									<h1 style="color: red">Tu t'es trompé sur le Login ou Mdp
-										tu n'as pas plus qu'a trouvé lequel</h1>
+									<h1 style="color: red">Erreur lors de l'identification</h1>
 								</c:if>
 
 								<a class="dropdown-item"

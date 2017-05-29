@@ -30,15 +30,15 @@
 <body style="background-image: url('./resources/image/whitebrick.jpg');">
 	<form action="j_spring_security_check" method="post">
 
-		Login: <input type="text" name="j_username" /> <br /> Mot de passe:
-		<input type="text" name="j_password" /> <br /> <input type="submit"
+		Login: <input type="text" name="j_username" /> <br />
+		 Mot de passe: <input type="text" name="j_password" /> <br /> 
+		 <input type="submit"
 			value="se connecter">
 
 	</form>
 
 	<c:if test="${not empty erreur}">
-		<h1 style="color: red">Tu t'es trompé sur le Login ou Mdp tu n'as
-			pas plus qu'a trouvé lequel</h1>
+		<h1 style="color: red">L'identification est incorrecte</h1>
 	</c:if>
 	
 </body>
