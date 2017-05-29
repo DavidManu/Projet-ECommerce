@@ -33,17 +33,13 @@ public class AuthenticationController {
 
 	@Autowired
 	private IProduitService produitService;
-<<<<<<< HEAD
 
-=======
-	
 	@Autowired
 	private ICategorieService categorieService;
-	
+
 	@Autowired
 	private ILigneCommandeService ligneCommandeService;
-	
->>>>>>> branch 'master' of https://github.com/DavidManu/Projet-ECommerce.git
+
 	/**
 	 * @return the produitService
 	 */
@@ -58,11 +54,7 @@ public class AuthenticationController {
 	public void setProduitService(IProduitService produitService) {
 		this.produitService = produitService;
 	}
-<<<<<<< HEAD
 
-=======
-		
-	
 	/**
 	 * @return the categorieService
 	 */
@@ -71,12 +63,12 @@ public class AuthenticationController {
 	}
 
 	/**
-	 * @param categorieService the categorieService to set
+	 * @param categorieService
+	 *            the categorieService to set
 	 */
 	public void setCategorieService(ICategorieService categorieService) {
 		this.categorieService = categorieService;
 	}
-	
 
 	/**
 	 * @return the ligneCommandeService
@@ -86,38 +78,32 @@ public class AuthenticationController {
 	}
 
 	/**
-	 * @param ligneCommandeService the ligneCommandeService to set
+	 * @param ligneCommandeService
+	 *            the ligneCommandeService to set
 	 */
 	public void setLigneCommandeService(ILigneCommandeService ligneCommandeService) {
 		this.ligneCommandeService = ligneCommandeService;
 	}
 
 	@ModelAttribute("monPannier")
-	public Panier getPanier(){
+	public Panier getPanier() {
 		return new Panier();
 	}
-	
->>>>>>> branch 'master' of https://github.com/DavidManu/Projet-ECommerce.git
+
 	/**
 	 * @return the pService
 	 */
-<<<<<<< HEAD
+
 	@RequestMapping(method = RequestMethod.GET) // value="/welcome",
-	public String goToWelcomePage(ModelMap model) {
-		List<Produit> listeProduits = produitService.getAllProduit();
-=======
-	@RequestMapping(method = RequestMethod.GET)//value="/welcome",
 	public String goToWelcomePage(ModelMap model, SessionStatus sessionStatus) {
-		List<Produit> listeProduits=produitService.getAllProduit();
->>>>>>> branch 'master' of https://github.com/DavidManu/Projet-ECommerce.git
+		List<Produit> listeProduits = produitService.getAllProduit();
 		model.addAttribute("pListe", listeProduits);
 		List<Categorie> listeCategories = categorieService.getAllCategorie();
 		model.addAttribute("cListe", listeCategories);
 		model.addAttribute("mLigneCommande", new LigneCommande());
-//		new ModelAndView("welcome", "mLigneCommande", new LigneCommande());
+		// new ModelAndView("welcome", "mLigneCommande", new LigneCommande());
 		return "welcome";
 	}
-<<<<<<< HEAD
 
 	// /**
 	// * @return the pService
@@ -135,30 +121,28 @@ public class AuthenticationController {
 	// model.addAttribute("panierMap", mapPanier);
 	// return "welcome";
 	// }
-=======
-	
-//	/**
-//	 * @return the pService
-//	 */
-//	@RequestMapping( method = RequestMethod.GET)
-//	public String getBasket(ModelMap model) {
-//		Map<Integer, Integer> mapPanier=new HashMap<Integer, Integer>();
-//		model.addAttribute("panierMap", mapPanier);
-//		return "welcome";
-//	}
-//	
->>>>>>> branch 'master' of https://github.com/DavidManu/Projet-ECommerce.git
+
+	// /**
+	// * @return the pService
+	// */
+	// @RequestMapping( method = RequestMethod.GET)
+	// public String getBasket(ModelMap model) {
+	// Map<Integer, Integer> mapPanier=new HashMap<Integer, Integer>();
+	// model.addAttribute("panierMap", mapPanier);
+	// return "welcome";
+	// }
+	//
 
 	@RequestMapping(value = "/ajouterLigneCommande", method = RequestMethod.POST)
-	public String addLigneCommande(@ModelAttribute("mLigneCommande") LigneCommande pLigneCommande, ModelMap model, BindingResult result, @ModelAttribute("monPannier") Panier monPannier)
-			throws Exception {//
+	public String addLigneCommande(@ModelAttribute("mLigneCommande") LigneCommande pLigneCommande, ModelMap model,
+			BindingResult result, @ModelAttribute("monPannier") Panier monPannier) throws Exception {//
 		System.out.println("je rentre dans addligne");
 
 		if (result.hasErrors()) {
 			return "welcome";
 		} else {
 			System.out.println("je suis dans le else");
-			LigneCommande lc_rec=ligneCommandeService.createLigneCommande(pLigneCommande);
+			LigneCommande lc_rec = ligneCommandeService.createLigneCommande(pLigneCommande);
 			System.out.println(lc_rec);
 			monPannier.getListLigneCommandes().add(lc_rec);
 			List<LigneCommande> listeLigneCommandes = monPannier.getListLigneCommandes();
@@ -166,9 +150,7 @@ public class AuthenticationController {
 			return "welcome";
 		}
 	}
-		
 
-	
 	@RequestMapping(value = "/adminCatProd/adminCatProdPage", method = RequestMethod.GET)
 	public String goToAdminCatProdPage(ModelMap model) {
 		// Récuperer l'admin cat qui vient de se connecter

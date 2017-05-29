@@ -110,7 +110,7 @@
 
 			<div style="color: blue; font-style: italic; font-size: 14pt">
 				<a
-					href="${pageContext.request.contextPath}/produit/afficheCreateCategorieForm">Cliquez
+					href="${pageContext.request.contextPath}/categorie/afficheCreateCategorieForm">Cliquez
 					Ici pour ajouter une categorie à la liste des categories</a>
 			</div>
 
