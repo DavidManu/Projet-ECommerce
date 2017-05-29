@@ -102,14 +102,14 @@ public class CategorieController {
 	 */
 
 	@RequestMapping(value = "/edit", method = RequestMethod.GET)
-	public ModelAndView affichFormEdit(@RequestParam("idCategorie") long id) {
+	public ModelAndView affichFormEdit(@RequestParam("idCategorie") int id) {
 
 		String viewName = "afficheCreateCategorieForm";
 		return new ModelAndView(viewName, "mCategorie", categorieService.getOneCategorie(id));
 	}
 
 	@RequestMapping(value = "/delete/{idCategorie}", method = RequestMethod.GET)
-	public String supprimerCategorie(ModelMap model, @PathVariable("idCategorie") long id) {
+	public String supprimerCategorie(ModelMap model, @PathVariable("idCategorie") int id) {
 
 		Categorie c_rec = categorieService.getOneCategorie(id);
 		categorieService.deleteCategorie(c_rec.getIdCategorie());

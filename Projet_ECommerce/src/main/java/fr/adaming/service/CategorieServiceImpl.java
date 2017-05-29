@@ -55,7 +55,7 @@ public class CategorieServiceImpl implements ICategorieService {
 	}
 
 	@Override
-	public Categorie getOneCategorie(long id) {
+	public Categorie getOneCategorie(int id) {
 		return categorieDao.getOneCategorie(id);
 	}
 

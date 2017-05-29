@@ -63,7 +63,7 @@ public class CategorieDaoImpl implements ICategorieDao {
 	 * Recuperation d'une categorie
 	 */
 	@Override
-	public Categorie getOneCategorie(long id) {
+	public Categorie getOneCategorie(int id) {
 		Session s = sf.getCurrentSession();
 
 		Categorie cat_rec = (Categorie) s.get(Categorie.class, id);
@@ -105,5 +105,6 @@ public class CategorieDaoImpl implements ICategorieDao {
 		s.merge(cat_rec);
 		return cat_rec;
 	}
+
 
 }
