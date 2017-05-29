@@ -55,8 +55,8 @@ public class CategorieServiceImpl implements ICategorieService {
 	}
 
 	@Override
-	public Categorie getOneCategorie(int id) {
-		return categorieDao.getOneCategorie(id);
+	public Categorie getOneCategorie(Categorie c) {
+		return categorieDao.getOneCategorie(c);
 	}
 
 	@Override
@@ -70,9 +70,8 @@ public class CategorieServiceImpl implements ICategorieService {
 	}
 
 	@Override
-	public Categorie updateCategorie(Categorie c) {
-		return categorieDao.updateCategorie(c);
+	public Categorie updateCategorie(long id) {
+		return categorieDao.updateCategorie(id);
 	}
-
 
 }

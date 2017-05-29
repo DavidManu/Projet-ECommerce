@@ -62,15 +62,15 @@ public class CategorieController {
 	}
 
 	/**
-	 * Generation de la liste des categories
-	 */
-	@RequestMapping(value = "/listeCategorie", method = RequestMethod.GET)
-	public String afficherListeCategories(ModelMap model) {
+		 * Generation de la liste des categories
+		 */
+		@RequestMapping(value = "/listeCategorie", method = RequestMethod.GET)
+		public String afficherListeCategories(ModelMap model) {
 
-		List<Categorie> listeCategories = categorieService.getAllCategorie();
-		model.addAttribute("cListe", listeCategories);
-		return "categories";
-	}
+			List<Categorie> listeCategories = categorieService.getAllCategorie();
+			model.addAttribute("cListe", listeCategories);
+			return "categories";
+		}
 
 	/**
 	 * Ajout d'un produit à liste de categories
@@ -84,8 +84,8 @@ public class CategorieController {
 	}
 
 	@RequestMapping(value = "/insererCategorie", method = RequestMethod.POST)
-	public String ajouterCategorie(@ModelAttribute("mCategorie") Categorie pCategorie, ModelMap model,
-			BindingResult result) throws Exception {
+	public String ajouterCategorie(@ModelAttribute("mCategorie") Categorie pCategorie, ModelMap model, BindingResult result)
+			throws Exception {
 
 		if (result.hasErrors()) {
 			return "afficheCreateCategorieForm";
@@ -102,16 +102,21 @@ public class CategorieController {
 	 */
 
 	@RequestMapping(value = "/edit", method = RequestMethod.GET)
-	public ModelAndView affichFormEdit(@RequestParam("idCategorie") int id) {
+	public ModelAndView affichFormEdit(@RequestParam("idCategorie") long id) {
 
+		Categorie c = new Categorie();
+		c.setIdCategorie(id);
+		Categorie c_rec = categorieService.getOneCategorie(c);
 		String viewName = "afficheCreateCategorieForm";
-		return new ModelAndView(viewName, "mCategorie", categorieService.getOneCategorie(id));
+		return new ModelAndView(viewName, "mCategorie", c_rec);
 	}
 
 	@RequestMapping(value = "/delete/{idCategorie}", method = RequestMethod.GET)
-	public String supprimerCategorie(ModelMap model, @PathVariable("idCategorie") int id) {
+	public String supprimerCategorie(ModelMap model, @PathVariable("idCategorie") long id) {
 
-		Categorie c_rec = categorieService.getOneCategorie(id);
+		Categorie c = new Categorie();
+		c.setIdCategorie(id);
+		Categorie c_rec = categorieService.getOneCategorie(c);
 		categorieService.deleteCategorie(c_rec.getIdCategorie());
 		model.addAttribute("cListe", categorieService.getAllCategorie());
 

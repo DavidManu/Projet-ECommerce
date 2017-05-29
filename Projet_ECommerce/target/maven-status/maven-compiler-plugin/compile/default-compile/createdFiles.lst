@@ -1,8 +1,6 @@
 fr\adaming\model\Commande.class
 fr\adaming\model\LigneCommande.class
-fr\adaming\dao\AdminDaoImpl.class
 fr\adaming\service\ProduitServiceImpl.class
-fr\adaming\service\AdminServiceImpl.class
 fr\adaming\model\Panier.class
 fr\adaming\dao\ILigneCommandeDao.class
 fr\adaming\service\CategorieServiceImpl.class
@@ -17,14 +15,10 @@ fr\adaming\model\Admin.class
 fr\adaming\model\Categorie.class
 fr\adaming\dao\ICategorieDao.class
 fr\adaming\controllers\ProduitController.class
-fr\adaming\service\IAdminService.class
 fr\adaming\model\Produit.class
-fr\adaming\controllers\ImageCOntroller.class
 fr\adaming\model\Role.class
 fr\adaming\service\LigneCommandeServiceImpl.class
 fr\adaming\dao\LigneCommandeDaoImpl.class
-fr\adaming\controllers\AdministrateurController.class
-fr\adaming\dao\IAdminDao.class
 fr\adaming\dao\ProduitDaoImpl.class
 fr\adaming\controllers\AuthenticationController.class
 fr\adaming\service\ILigneCommandeService.class

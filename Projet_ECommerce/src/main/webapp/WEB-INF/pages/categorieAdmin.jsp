@@ -73,7 +73,7 @@
 								href="${pageContext.request.contextPath}/authentication/adminCatProd/adminCatProdPage"
 								style="background-color: #662200; color: white; font-weight: bold;">As
 								general admin</a> <br /> <a class="dropdown-item"
-								href="${pageContext.request.contextPath}/authentication/adminProd/adminProdPage"
+								href="${pageContext.request.contextPath}/authentication/adminProd/transition"
 								style="background-color: #662200; color: white; font-weight: bold;">As
 								product admin</a>
 
@@ -120,34 +120,34 @@
 		<div align="center">
 
 
-			<table width="100%" cellpadding="6">
-				<tr style="background-color: grey; color: white; text-align: center">
+		<table width="100%" cellpadding="6">
+			<tr style="background-color: grey; color: white; text-align: center">
 
-					<th>ID</th>
-					<th>Nom</th>
-					<th>Description</th>
-					<th>Photo</th>
-					<th>Commande</th>
+				<th>ID</th>
+				<th>Nom</th>
+				<th>Description</th>
+				<th>Photo</th>
+				<th>Commande</th>
 
 
+			</tr>
+			<c:forEach var="categorie" items="${cListe}">
+				<tr>
+
+					<td>${categorie.idCategorie}</td>
+					<td>${categorie.nomCategorie}</td>
+					<td>${categorie.description}</td>
+					<td>${categorie.photo}</td>
+					<td><a
+						href="${pageContext.request.contextPath}/categorie/delete/${categorie.idCategorie}">Supprimer</a>
+						| <a
+						href="${pageContext.request.contextPath}/categorie/edit?idCategorie=${categorie.idCategorie}">Editer</a></td>
+					<%-- 					<td>${}</td> --%>
+
+					<%-- <td><a href="${pageContext.request.contextPath}/personne/delete/${personne.id}">Ajouter au pannier</a></td> --%>
 				</tr>
-				<c:forEach var="categorie" items="${cListe}">
-					<tr>
-
-						<td>${categorie.idCategorie}</td>
-						<td>${categorie.nomCategorie}</td>
-						<td>${categorie.description}</td>
-						<td>${categorie.photo}</td>
-						<td><a
-							href="${pageContext.request.contextPath}/categorie/delete/${categorie.idCategorie}">Supprimer</a>
-							| <a
-							href="${pageContext.request.contextPath}/categorie/edit?idCategorie=${categorie.idCategorie}">Editer</a></td>
-						<%-- 					<td>${}</td> --%>
-
-						<%-- <td><a href="${pageContext.request.contextPath}/personne/delete/${personne.id}">Ajouter au pannier</a></td> --%>
-					</tr>
-				</c:forEach>
-			</table>
+			</c:forEach>
+		</table>
 
 		</div>
 	</div>

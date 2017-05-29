@@ -104,14 +104,12 @@
 
 		<form>
 			<select class="selectpicker form-control">
-
 				<option data-icon="glyphicon-heart">Tous</option>
 				<option data-icon="glyphicon-heart"
 					<a href="${pageContext.request.contextPath}/categorie/listeCategorie">Musique</a>></option>
 				<option data-icon="glyphicon-heart">Jeux</option>
 				<option data-icon="glyphicon-heart">Sport</option>
 				<option data-icon="glyphicon-heart">Livres</option>
-
 				<option>Toutes</option>
 				<c:forEach var="categorie" items="${cListe}">
 					<option>${categorie.nomCategorie}</option>
@@ -145,13 +143,12 @@
 					<td>${produit.quantite}</td>
 					<td>${produit.description}</td>
 					<td>${produit.photo}</td>
-					<td><form:form action="authentication/ajouterLigneCommande"
-							method="POST" modelAttribute="mLigneCommande">
+					<td><form:form action="authentication/ajouterLigneCommande" method="POST" modelAttribute="mLigneCommande">
 							<form:input path="quantite" />
 							<form:errors path="quantite" cssStyle="color:red"></form:errors>
-							<form:input path="produit" hidden="true" value="${produit}" />
+							<form:input path="produit" hidden="true" value="${produit.idProduit}"/>
 							<form:errors path="produit" cssStyle="color:red"></form:errors>
-							<form:input path="prix" hidden="true" value="${produit.prix}" />
+							<form:input path="prix" hidden="true" value="${produit.prix}"/>
 							<form:errors path="prix" cssStyle="color:red"></form:errors>
 							<input type="submit" value="Ajouter au pannier" />
 						</form:form></td>
@@ -188,17 +185,17 @@
 				</c:forEach>
 			</table>
 
-			<%-- <form:form action="authentication/ajouterLigneCommande" method="POST" modelAttribute="mLigneCommande"> --%>
+<%-- <form:form action="authentication/ajouterLigneCommande" method="POST" modelAttribute="mLigneCommande"> --%>
 
-			<%-- 							<form:input path="produit" value="${produit}"/> --%>
-			<%-- 							<form:errors path="produit" cssStyle="color:red"></form:errors> --%>
-			<%-- 							<form:input path="quantite" /> --%>
-			<%-- 							<form:errors path="quantite" cssStyle="color:red"></form:errors> --%>
+<%-- 							<form:input path="produit" value="${produit}"/> --%>
+<%-- 							<form:errors path="produit" cssStyle="color:red"></form:errors> --%>
+<%-- 							<form:input path="quantite" /> --%>
+<%-- 							<form:errors path="quantite" cssStyle="color:red"></form:errors> --%>
 
-			<%-- 							<form:input path="prix" hidden="true" value="${produit.prix}"/> --%>
-			<%-- 							<form:errors path="prix" cssStyle="color:red"></form:errors> --%>
-			<!-- 							<input type="submit" value="Ajouter au pannier" /> -->
-			<%-- 						</form:form> --%>
+<%-- 							<form:input path="prix" hidden="true" value="${produit.prix}"/> --%>
+<%-- 							<form:errors path="prix" cssStyle="color:red"></form:errors> --%>
+<!-- 							<input type="submit" value="Ajouter au pannier" /> -->
+<%-- 						</form:form> --%>
 		</div>
 	</div>
 

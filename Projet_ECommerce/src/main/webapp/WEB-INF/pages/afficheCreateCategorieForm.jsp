@@ -32,82 +32,91 @@
 </head>
 <body>
 
-
-
-	<div style="text-align: center">
-		<header>
-			<div class="header-content">
-				<div class="header-content-inner">
-					<h2 id="homeHeading" style="text-align: center">Bienvenue dans
-						votre Online shop!</h2>
-					<hr>
-				</div>
-			</div>
-		</header>
-
-
-		<br /> <br />
-
-
-		<h4>Voici les categories disponibles:</h4>
+	
 
 		<div style="text-align: center">
+			<header>
+				<div class="header-content">
+					<div class="header-content-inner">
+						<h2 id="homeHeading" style="text-align: center">Bienvenue
+							dans votre Online shop!</h2>
+						<hr>
+					</div>
+				</div>
+			</header>
 
-			<table width="100%" cellpadding="6">
-				<tr style="text-align: center; background-color: grey; color: white">
 
-					<th>ID</th>
-					<th>Nom</th>
-					<th>Description</th>
-					<th>Photo</th>
-					<th>Commande</th>
-				</tr>
-				<c:forEach var="categorie" items="${cListe}">
+			<br /> <br />
+
+
+		
+
+			<h4>Voici les categories disponibles:</h4>
+
+			<div style="text-align: center">
+
+
+				<table width="100%" cellpadding="6">
 					<tr
-						style="text-align: center; background-color: grey; color: white">
-						<td>${categorie.idCategorie}</td>
-						<td>${categorie.nomCategorie}</td>
-						<td>${categorie.description}</td>
-						<td>${categorie.photo}</td>
-						<td><a
-							href="${pageContext.request.contextPath}/categorie/delete/${categorie.idCategorie}">Supprimer</a>
-							| <a
-							href="${pageContext.request.contextPath}/categorie/edit?idCategorie=${categorie.idCategorie}">Editer</a></td>
-						<%-- 					<td>${}</td> --%>
+						style="background-color: grey; color: white; text-align: center">
 
-						<%-- <td><a href="${pageContext.request.contextPath}/personne/delete/${personne.id}">Ajouter au pannier</a></td> --%>
+						<th>ID</th>
+						<th>Nom</th>
+						<th>Description</th>
+						<th>Photo</th>
+						<th>Commande</th>
+
+
 					</tr>
-				</c:forEach>
-			</table>
+					<c:forEach var="categorie" items="${cListe}">
+						<tr>
 
+							<td>${categorie.idCategorie}</td>
+							<td>${categorie.nomCategorie}</td>
+							<td>${categorie.description}</td>
+							<td>${categorie.photo}</td>
+							<td><a
+								href="${pageContext.request.contextPath}/categorie/delete/${categorie.idCategorie}">Supprimer</a>
+								| <a
+								href="${pageContext.request.contextPath}/categorie/edit?idCategorie=${categorie.idCategorie}">Editer</a></td>
+							<%-- 					<td>${}</td> --%>
+
+							<%-- <td><a href="${pageContext.request.contextPath}/personne/delete/${personne.id}">Ajouter au pannier</a></td> --%>
+						</tr>
+					</c:forEach>
+				</table>
+
+			</div>
 		</div>
-	</div>
 
 
-	<table width="100%" cellpadding="6" style="text_align: center">
-		<tr style="text-align: center; background-color: grey; color: white">
-			<form:form action="insererCategorie" method="POST"
-				modelAttribute="mCategorie">
+	
+	<h1 style="background-color: grey; color: white; text_align: center">
+		<b>L'ajout a bien été pris en compte</b>
+	</h1>
 
-				<!-- 		<table width="100%"> -->
+	<form:form action="insererCategorie" method="POST"
+		modelAttribute="mCategorie">
+
+		<!-- 		<table width="100%"> -->
 		
 		Nom de la Categorie:<form:input path="nomCategorie" />
-				<form:errors path="nomCategorie" cssStyle="color:red"></form:errors>
-				<br />
+		<form:errors path="nomCategorie" cssStyle="color:red"></form:errors>
+		<br />
 		
 			Description:<form:input path="description" />
-				<form:errors path="description" cssStyle="color:red"></form:errors>
-				<br />
-				<%-- 					Photo : <form:input path="photo" /> --%>
-				<%-- 		<form:errors path="photo" cssStyle="color:red"></form:errors> --%>
-				<!-- 		<br /> -->
+		<form:errors path="description" cssStyle="color:red"></form:errors>
+		<br />
+		<%-- 					Photo : <form:input path="photo" /> --%>
+		<%-- 		<form:errors path="photo" cssStyle="color:red"></form:errors> --%>
+		<!-- 		<br /> -->
 
-				<br />
-				<br />
-				<input type="submit" value="Ajouter une Categorie" />
-			</form:form>
-		</tr>
-	</table>
+		<br />
+		<br />
+		<input type="submit" value="Ajouter une Categorie" />
+	</form:form>
+
+
 
 	<div class="navbar-fixed-bottom"
 		style="background-color: #662200; box-shadow: 10px 10px 5px #888888; color: white; font-weight: bold;">

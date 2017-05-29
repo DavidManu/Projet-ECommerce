@@ -65,7 +65,7 @@ public class ProduitDaoImpl implements IProduitDao {
 	 * Recuperation d'un produit
 	 */
 	@Override
-	public Produit getOneProduit(int id) {
+	public Produit getOneProduit(Long id) {
 		Session s = sf.getCurrentSession();
 
 		Produit produit_rec = (Produit) s.get(Produit.class, id);
@@ -98,43 +98,11 @@ public class ProduitDaoImpl implements IProduitDao {
 	 * Modifier un produit
 	 */
 	@Override
-	public Produit updateProduit(Produit p) {
+	public Produit updateProduit(long id) {
 		Session s = sf.getCurrentSession();
-		Produit produit_rec = (Produit) s.get(Produit.class, p.getIdProduit());
-		produit_rec.setDesignation(p.getDesignation());
-		produit_rec.setDescription(p.getDescription());
-		produit_rec.setPrix(p.getPrix());
-		produit_rec.setQuantite(p.getQuantite());
-		produit_rec.setPhoto(p.getPhoto());
-		produit_rec.setCategorie(p.getCategorie());
+		Produit produit_rec = (Produit) s.get(Produit.class, id);
 		s.merge(produit_rec);
 		return produit_rec;
-	}
-
-	@Override
-	public List<Produit> getProduitsParCategorie(int id) {
-		Session s = sf.getCurrentSession();
-		String req = "SELECT p FROM Produit AS p where p.categorie.id=:pidCategorie";
-		Query query = s.createQuery(req);
-		query.setParameter("idCategorie", id);
-		return query.list();
-	}
-
-	@Override
-	public List<Produit> getProduitsParMotCle(String motcle) {
-		Session s = sf.getCurrentSession();
-		String req = "SELECT p FROM Produit AS p where p.designation LIKE :x or p.description LIKE :x or p.categorie.nom LIKE :x";
-		Query query = s.createQuery(req);
-		query.setParameter("x", "%" + motcle + "%");
-		return query.list();
-	}
-
-	@Override
-	public List<Produit> getAllProduitsSelectionnes() {
-		Session s = sf.getCurrentSession();
-		String req = "SELECT p from Produit AS p where p.selection=true";
-		Query query = s.createQuery(req);
-		return query.list();
 	}
 
 }

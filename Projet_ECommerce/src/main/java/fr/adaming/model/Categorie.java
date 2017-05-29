@@ -154,5 +154,4 @@ public class Categorie {
 				+ Arrays.toString(photo) + ", description=" + description + "]";
 	}
 
-
 }

@@ -54,8 +54,11 @@ public class CategorieDaoImpl implements ICategorieDao {
 	@Override
 	public List<Categorie> getAllCategorie() {
 		Session s = sf.getCurrentSession();
+
 		String reqGetAll = "FROM Categorie";
+
 		Query query = s.createQuery(reqGetAll);
+
 		return query.list();
 	}
 
@@ -63,10 +66,10 @@ public class CategorieDaoImpl implements ICategorieDao {
 	 * Recuperation d'une categorie
 	 */
 	@Override
-	public Categorie getOneCategorie(int id) {
+	public Categorie getOneCategorie(Categorie c) {
 		Session s = sf.getCurrentSession();
 
-		Categorie cat_rec = (Categorie) s.get(Categorie.class, id);
+		Categorie cat_rec = (Categorie) s.get(Categorie.class, c.getIdCategorie());
 		return cat_rec;
 	}
 
@@ -96,15 +99,11 @@ public class CategorieDaoImpl implements ICategorieDao {
 	 * Modifier une categorie
 	 */
 	@Override
-	public Categorie updateCategorie(Categorie c) {
+	public Categorie updateCategorie(long id) {
 		Session s = sf.getCurrentSession();
-		Categorie cat_rec = (Categorie) s.get(Categorie.class, c.getIdCategorie());
-		cat_rec.setNomCategorie(c.getNomCategorie());
-		cat_rec.setDescription(c.getDescription());
-		cat_rec.setPhoto(c.getPhoto());
+		Categorie cat_rec = (Categorie) s.get(Categorie.class, id);
 		s.merge(cat_rec);
 		return cat_rec;
 	}
-
 
 }

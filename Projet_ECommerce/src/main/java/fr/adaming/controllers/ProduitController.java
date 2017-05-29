@@ -11,11 +11,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import fr.adaming.model.Produit;
-import fr.adaming.service.ICategorieService;
 import fr.adaming.service.IProduitService;
 
 /**
@@ -26,31 +24,6 @@ import fr.adaming.service.IProduitService;
 @Controller
 @RequestMapping("/produit")
 public class ProduitController {
-	/**
-	 * Injection de la classeService dans le controller
-	 */
-
-	@Autowired
-	private ICategorieService categorieService;
-
-	/**
-	 * Definition des getters et setters
-	 */
-
-	/**
-	 * @return the categorieService
-	 */
-	public ICategorieService getCategorieService() {
-		return categorieService;
-	}
-
-	/**
-	 * @param categorieService
-	 *            the categorieService to set
-	 */
-	public void setCategorieService(ICategorieService categorieService) {
-		this.categorieService = categorieService;
-	}
 
 	/**
 	 * Injection de la classeService dans le controller
@@ -126,35 +99,24 @@ public class ProduitController {
 	 */
 
 	@RequestMapping(value = "/edit", method = RequestMethod.GET)
-	public String affichFormEdit(ModelMap model, @RequestParam("idProduit") int id) {
+	public ModelAndView affichFormEdit(@RequestParam("idProduit") long id) {
 
-		model.addAttribute("mProduit", produitService.getOneProduit(id));
-		model.addAttribute("pListe", categorieService.getAllCategorie());
+		Produit p_rec = this.produitService.getOneProduit(id);
+		Produit p_modif = produitService.updateProduit(p_rec.getIdProduit());
+		String viewName = "afficheCreateProduitForm";
 
-		return "afficheCreateProduitForm";
+		return new ModelAndView(viewName, "mProduit", p_modif);
 	}
 
 	@RequestMapping(value = "/delete/{idProduit}", method = RequestMethod.GET)
-	public String supprimerProduit(ModelMap model, @PathVariable("idProduit") int id) {
+	public String supprimerProduit(ModelMap model, @PathVariable("idProduit") long id) {
+
 
 		Produit p_rec = produitService.getOneProduit(id);
 		produitService.deleteProduit(p_rec.getIdProduit());
 		model.addAttribute("pListe", produitService.getAllProduit());
 
 		return "produits";
-	}
-
-	@RequestMapping(value = "/produit/submit", method = RequestMethod.POST)
-	public ModelAndView doSubmit(@ModelAttribute Produit mProduit, MultipartFile file) throws Exception {
-		if (!file.isEmpty()) {
-			mProduit.setPhoto(file.getBytes());
-		}
-		if (mProduit.getIdProduit() == 0) {
-			produitService.createProduit(mProduit);
-		} else {
-			produitService.updateProduit(mProduit);
-		}
-		return new ModelAndView("produits", "pListe", produitService.getAllProduit());
 	}
 
 }
