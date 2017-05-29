@@ -10,20 +10,35 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.servlet.ModelAndView;
 
+import fr.adaming.model.Categorie;
+import fr.adaming.model.LigneCommande;
+import fr.adaming.model.Panier;
 import fr.adaming.model.Produit;
+import fr.adaming.service.ICategorieService;
+import fr.adaming.service.ILigneCommandeService;
 import fr.adaming.service.IProduitService;
 
 @Controller
-@Scope("session")
+@SessionAttributes("monPannier")
 @RequestMapping("/authentication")
 public class AuthenticationController {
 
 	@Autowired
 	private IProduitService produitService;
 	
+	@Autowired
+	private ICategorieService categorieService;
+	
+	@Autowired
+	private ILigneCommandeService ligneCommandeService;
 	
 	/**
 	 * @return the produitService
@@ -39,13 +54,52 @@ public class AuthenticationController {
 		this.produitService = produitService;
 	}
 		
+	
+	/**
+	 * @return the categorieService
+	 */
+	public ICategorieService getCategorieService() {
+		return categorieService;
+	}
+
+	/**
+	 * @param categorieService the categorieService to set
+	 */
+	public void setCategorieService(ICategorieService categorieService) {
+		this.categorieService = categorieService;
+	}
+	
+
+	/**
+	 * @return the ligneCommandeService
+	 */
+	public ILigneCommandeService getLigneCommandeService() {
+		return ligneCommandeService;
+	}
+
+	/**
+	 * @param ligneCommandeService the ligneCommandeService to set
+	 */
+	public void setLigneCommandeService(ILigneCommandeService ligneCommandeService) {
+		this.ligneCommandeService = ligneCommandeService;
+	}
+
+	@ModelAttribute("monPannier")
+	public Panier getPanier(){
+		return new Panier();
+	}
+	
 	/**
 	 * @return the pService
 	 */
-	@RequestMapping( method = RequestMethod.GET)//value="/welcome",
-	public String goToWelcomePage(ModelMap model) {
+	@RequestMapping(method = RequestMethod.GET)//value="/welcome",
+	public String goToWelcomePage(ModelMap model, SessionStatus sessionStatus) {
 		List<Produit> listeProduits=produitService.getAllProduit();
 		model.addAttribute("pListe", listeProduits);
+		List<Categorie> listeCategories = categorieService.getAllCategorie();
+		model.addAttribute("cListe", listeCategories);
+		model.addAttribute("mLigneCommande", new LigneCommande());
+//		new ModelAndView("welcome", "mLigneCommande", new LigneCommande());
 		return "welcome";
 	}
 	
@@ -59,13 +113,27 @@ public class AuthenticationController {
 //		return "welcome";
 //	}
 //	
-//	@RequestMapping( method = RequestMethod.GET)
-//	public String addToBasket(ModelMap model) {
-//		Map<Integer, Integer> mapPanier=new HashMap<Integer, Integer>();
-//		model.addAttribute("panierMap", mapPanier);
-//		return "welcome";
-//	}	
 
+	@RequestMapping(value = "/ajouterLigneCommande", method = RequestMethod.POST)
+	public String addLigneCommande(@ModelAttribute("mLigneCommande") LigneCommande pLigneCommande, ModelMap model, BindingResult result)
+			throws Exception {//, @ModelAttribute("monPannier") Panier monPannier
+		System.out.println("je rentre dans addligne");
+
+		if (result.hasErrors()) {
+			return "welcome";
+		} else {
+			System.out.println("je suis dans le else");
+			LigneCommande lc_rec=ligneCommandeService.createLigneCommande(pLigneCommande);
+			System.out.println(lc_rec);
+//			monPannier.getListLigneCommandes().add(lc_rec);
+//			List<LigneCommande> listeLigneCommandes = monPannier.getListLigneCommandes();
+//			model.addAttribute("lcListe", listeLigneCommandes);
+			return "welcome";
+		}
+	}
+		
+
+	
 	@RequestMapping(value = "/adminCatProd/adminCatProdPage", method = RequestMethod.GET)
 	public String goToAdminCatProdPage(ModelMap model) {
 		// Récuperer l'admin cat qui vient de se connecter

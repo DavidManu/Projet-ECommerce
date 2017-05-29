@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,35 +31,38 @@
 <body style="background-image: url('./resources/image/whitebrick.jpg');">
 
 	<nav id="mainNav" class="navbar navbar-default navbar-fixed-top"
-		style="background-color: #662200; box-shadow: 10px 10px 5px #888888; ">
+		style="background-color: #662200; box-shadow: 10px 10px 5px #888888;">
 		<div class="container-fluid">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
-<!-- 				<button type="button" class="navbar-toggle collapsed" -->
-<!-- 					data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> -->
-<!-- 					<span class="sr-only">Toggle navigation</span> Menu <i -->
-<!-- 						class="fa fa-bars"></i> -->
-<!-- 				</button> -->
+				<!-- 				<button type="button" class="navbar-toggle collapsed" -->
+				<!-- 					data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> -->
+				<!-- 					<span class="sr-only">Toggle navigation</span> Menu <i -->
+				<!-- 						class="fa fa-bars"></i> -->
+				<!-- 				</button> -->
 				<a class="navbar-brand page-scroll"
-					href="${pageContext.request.contextPath}/authentication" style="color: white; font-weight: bold;"> Shop
-				</a>
+					href="${pageContext.request.contextPath}/authentication"
+					style="color: white; font-weight: bold;"> Shop </a>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a class="page-scroll" href="#about" style="color: white; font-weight: bold;">About</a></li>
+					<li><a class="page-scroll" href="#about"
+						style="color: white; font-weight: bold;">About</a></li>
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" id="navbarDropdownMenuLink"
-						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white; font-weight: bold;">
-							Login </a>
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+						style="color: white; font-weight: bold;"> Login </a>
 						<div class="dropdown-menu"
 							aria-labelledby="navbarDropdownMenuLink">
 							<a class="dropdown-item"
-								href="${pageContext.request.contextPath}/authentication/adminCatProd/adminCatProdPage" style="background-color: #662200; color: white; font-weight: bold;">As
+								href="${pageContext.request.contextPath}/authentication/adminCatProd/adminCatProdPage"
+								style="background-color: #662200; color: white; font-weight: bold;">As
 								general admin</a> <br /> <a class="dropdown-item"
-								href="${pageContext.request.contextPath}/authentication/adminProd/adminProdPage" style="background-color: #662200; color: white; font-weight: bold;">As
+								href="${pageContext.request.contextPath}/authentication/adminProd/adminProdPage"
+								style="background-color: #662200; color: white; font-weight: bold;">As
 								product admin</a>
 						</div></li>
 				</ul>
@@ -85,20 +89,21 @@
 		<br /> <br />
 		<h4>Selectionnez ici la categorie du produit que vous recherchez:</h4>
 		<br />
-		<form action="##################getAllByCat">
+
+		<form>
 			<select class="selectpicker form-control">
-				<option data-icon="glyphicon-heart">Tous</option>
-				<option data-icon="glyphicon-heart">Musique</option>
-				<option data-icon="glyphicon-heart">Jeux</option>
-				<option data-icon="glyphicon-heart">Sport</option>
-				<option data-icon="glyphicon-heart">Livres</option>
+				<option>Toutes</option>
+				<c:forEach var="categorie" items="${cListe}">
+					<option>${categorie.nomCategorie}</option>
+				</c:forEach>
 			</select>
 		</form>
 
 		<br /> <br />
 		<h4>Voici les produits disponibles:</h4>
 		<table width="100%" cellpadding="6" style="background-color: white">
-			<tr style="background-color: #662200; color: white; text-align: center">
+			<tr
+				style="background-color: #662200; color: white; text-align: center">
 				<th>Selection</th>
 				<th>ID</th>
 				<th>Categorie</th>
@@ -120,9 +125,15 @@
 					<td>${produit.quantite}</td>
 					<td>${produit.description}</td>
 					<td>${produit.photo}</td>
-					<td><a
-						href="${pageContext.request.contextPath}/produit/addToBasket/${personne.id}"
-						class="btn btn-default btn-xl sr-button">Ajouter au pannier</a></td>
+					<td><form:form action="authentication/ajouterLigneCommande" method="POST" modelAttribute="mLigneCommande">
+							<form:input path="quantite" />
+							<form:errors path="quantite" cssStyle="color:red"></form:errors>
+							<form:input path="produit" hidden="true" value="${produit}"/>
+							<form:errors path="produit" cssStyle="color:red"></form:errors>
+							<form:input path="prix" hidden="true" value="${produit.prix}"/>
+							<form:errors path="prix" cssStyle="color:red"></form:errors>
+							<input type="submit" value="Ajouter au pannier" />
+						</form:form></td>
 				</tr>
 			</c:forEach>
 		</table>
@@ -143,11 +154,12 @@
 					<th>Operation</th>
 				</tr>
 
-				<c:forEach var="produit" items="${pListe}">
+				<c:forEach var="ligneCommande"
+					items="${monPannier.getListLigneCommandes()}">
 					<tr>
-						<td>${produit.designation}</td>
-						<td>${produit.prix}</td>
-						<td>${produit.quantite}</td>
+						<td>${ligneCommande.idCommande}</td>
+						<td>${ligneCommande.quantite}</td>
+						<td>${ligneCommande.prix}</td>
 						<td><a
 							href="${pageContext.request.contextPath}/produit/addToBasket/${personne.id}"
 							class="btn btn-default btn-xl sr-button">Supprimer du pannier</a></td>
@@ -155,11 +167,23 @@
 				</c:forEach>
 			</table>
 
+<%-- <form:form action="authentication/ajouterLigneCommande" method="POST" modelAttribute="mLigneCommande"> --%>
+
+<%-- 							<form:input path="produit" value="${produit}"/> --%>
+<%-- 							<form:errors path="produit" cssStyle="color:red"></form:errors> --%>
+<%-- 							<form:input path="quantite" /> --%>
+<%-- 							<form:errors path="quantite" cssStyle="color:red"></form:errors> --%>
+
+<%-- 							<form:input path="prix" hidden="true" value="${produit.prix}"/> --%>
+<%-- 							<form:errors path="prix" cssStyle="color:red"></form:errors> --%>
+<!-- 							<input type="submit" value="Ajouter au pannier" /> -->
+<%-- 						</form:form> --%>
 		</div>
 	</div>
 
 
-	<div class="navbar-fixed-bottom" style="background-color: #662200; box-shadow: 10px 10px 5px #888888; color: white; font-weight: bold;">
+	<div class="navbar-fixed-bottom"
+		style="background-color: #662200; box-shadow: 10px 10px 5px #888888; color: white; font-weight: bold;">
 		<div class="text-center center-block">
 			<br />
 			<p class="txt-railway" style="font-weight: bold">Contact us</p>
