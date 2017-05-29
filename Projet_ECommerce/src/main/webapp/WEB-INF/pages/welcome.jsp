@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -100,14 +101,22 @@
 		<br /> <br />
 		<h4>Selectionnez ici la categorie du produit que vous recherchez:</h4>
 		<br />
-		<form action="##################getAllByCat">
+
+		<form>
 			<select class="selectpicker form-control">
+<<<<<<< HEAD
 				<option data-icon="glyphicon-heart">Tous</option>
 				<option data-icon="glyphicon-heart"
 					<a href="${pageContext.request.contextPath}/categorie/listeCategorie">Musique</a>></option>
 				<option data-icon="glyphicon-heart">Jeux</option>
 				<option data-icon="glyphicon-heart">Sport</option>
 				<option data-icon="glyphicon-heart">Livres</option>
+=======
+				<option>Toutes</option>
+				<c:forEach var="categorie" items="${cListe}">
+					<option>${categorie.nomCategorie}</option>
+				</c:forEach>
+>>>>>>> branch 'master' of https://github.com/DavidManu/Projet-ECommerce.git
 			</select>
 		</form>
 
@@ -137,9 +146,15 @@
 					<td>${produit.quantite}</td>
 					<td>${produit.description}</td>
 					<td>${produit.photo}</td>
-					<td><a
-						href="${pageContext.request.contextPath}/produit/addToBasket/${personne.id}"
-						class="btn btn-default btn-xl sr-button">Ajouter au pannier</a></td>
+					<td><form:form action="authentication/ajouterLigneCommande" method="POST" modelAttribute="mLigneCommande">
+							<form:input path="quantite" />
+							<form:errors path="quantite" cssStyle="color:red"></form:errors>
+							<form:input path="produit" hidden="true" value="${produit}"/>
+							<form:errors path="produit" cssStyle="color:red"></form:errors>
+							<form:input path="prix" hidden="true" value="${produit.prix}"/>
+							<form:errors path="prix" cssStyle="color:red"></form:errors>
+							<input type="submit" value="Ajouter au pannier" />
+						</form:form></td>
 				</tr>
 			</c:forEach>
 		</table>
@@ -160,11 +175,12 @@
 					<th>Operation</th>
 				</tr>
 
-				<c:forEach var="produit" items="${pListe}">
+				<c:forEach var="ligneCommande"
+					items="${monPannier.getListLigneCommandes()}">
 					<tr>
-						<td>${produit.designation}</td>
-						<td>${produit.prix}</td>
-						<td>${produit.quantite}</td>
+						<td>${ligneCommande.idCommande}</td>
+						<td>${ligneCommande.quantite}</td>
+						<td>${ligneCommande.prix}</td>
 						<td><a
 							href="${pageContext.request.contextPath}/produit/addToBasket/${personne.id}"
 							class="btn btn-default btn-xl sr-button">Supprimer du pannier</a></td>
@@ -172,6 +188,17 @@
 				</c:forEach>
 			</table>
 
+<%-- <form:form action="authentication/ajouterLigneCommande" method="POST" modelAttribute="mLigneCommande"> --%>
+
+<%-- 							<form:input path="produit" value="${produit}"/> --%>
+<%-- 							<form:errors path="produit" cssStyle="color:red"></form:errors> --%>
+<%-- 							<form:input path="quantite" /> --%>
+<%-- 							<form:errors path="quantite" cssStyle="color:red"></form:errors> --%>
+
+<%-- 							<form:input path="prix" hidden="true" value="${produit.prix}"/> --%>
+<%-- 							<form:errors path="prix" cssStyle="color:red"></form:errors> --%>
+<!-- 							<input type="submit" value="Ajouter au pannier" /> -->
+<%-- 						</form:form> --%>
 		</div>
 	</div>
 

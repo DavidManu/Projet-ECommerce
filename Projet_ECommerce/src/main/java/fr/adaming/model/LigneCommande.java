@@ -20,7 +20,7 @@ public class LigneCommande {
 	@Column(name = "id_lc")
 	private Long idCommande;
 	private int quantite;
-	private int prix;
+	private int prix;//=(int) this.getProduit().getPrix()
 
 	// associations
 	@ManyToOne
