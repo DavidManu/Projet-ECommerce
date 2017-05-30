@@ -86,26 +86,30 @@ public class Produit {
 	}
 
 	// getters setters
-	/**
-	 * @return the idProduit
-	 */
-	public int getIdProduit() {
-		return idProduit;
-	}
 
-	/**
-	 * @param idProduit
-	 *            the idProduit to set
-	 */
-	public void setIdProduit(int idProduit) {
-		this.idProduit = idProduit;
-	}
-
+	
+	
+	
+	
 	/**
 	 * @return the designation
 	 */
 	public String getDesignation() {
 		return designation;
+	}
+
+	/**
+	 * @return the idProduit
+	 */
+	public long getIdProduit() {
+		return idProduit;
+	}
+
+	/**
+	 * @param idProduit the idProduit to set
+	 */
+	public void setIdProduit(long idProduit) {
+		this.idProduit = idProduit;
 	}
 
 	/**

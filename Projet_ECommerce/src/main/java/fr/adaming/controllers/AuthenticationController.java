@@ -157,7 +157,7 @@ public class AuthenticationController {
 		lc_rec.setQuantite(1);
 		boolean rep = false;
 		for ( LigneCommande lc : monPanier.getListLigneCommandes()) {
-			if (lc.getProduit().getIdProduit().same(pId)) {
+			if (lc.getProduit().getIdProduit()==pId) {
 				rep = true;
 				lc.setQuantite(lc.getQuantite() + 1);
 			}
