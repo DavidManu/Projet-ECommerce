@@ -32,7 +32,7 @@ public class ImageCOntroller {
 		this.produitService = produitService;
 	}
 	
-	
+	//blablab
 	@RequestMapping(value = "/img/produit/{idP}", produces = MediaType.IMAGE_JPEG_VALUE)
 	@ResponseBody
 	public byte[] getImgProduit(@PathVariable("idP") int pId) throws IOException {

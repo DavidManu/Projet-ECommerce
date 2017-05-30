@@ -29,4 +29,9 @@ public class LoginController {
 		model.addAttribute("erreur", "true");
 		return "login";
 	}
+	
+	public String get(){
+		return null;
+		
+	}
 }

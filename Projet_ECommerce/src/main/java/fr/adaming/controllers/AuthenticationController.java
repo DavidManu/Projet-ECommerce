@@ -234,7 +234,7 @@ public class AuthenticationController {
 	///
 	// return "welcome";
 	// }
-
+//blalbla
 	@RequestMapping(value = "/adminCatProd/adminCatProdPage", method = RequestMethod.GET)
 	public String goToAdminCatProdPage(ModelMap model) {
 		// Récuperer l'admin cat qui vient de se connecter
