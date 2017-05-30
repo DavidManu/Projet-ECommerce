@@ -17,7 +17,7 @@ import fr.adaming.model.Categorie;
  */
 @Repository
 public class CategorieDaoImpl implements ICategorieDao {
-
+	// Commit
 	/**
 	 * Definition d'une session
 	 */

@@ -17,3 +17,4 @@ public interface ICategorieDao {
 	public Categorie updateCategorie(Categorie c);
 
 }
+//Commit

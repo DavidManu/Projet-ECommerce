@@ -8,7 +8,7 @@
 
 	<!-- delimitation du scan pour les controllers -->
 	<context:component-scan base-package="fr.adaming.controllers" />
-
+<!-- Commit -->
 	<!-- activation des annotations -->
 	<mvc:annotation-driven />
 	<mvc:default-servlet-handler />

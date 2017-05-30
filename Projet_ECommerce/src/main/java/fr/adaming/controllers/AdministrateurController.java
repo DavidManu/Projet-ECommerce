@@ -18,6 +18,7 @@ import fr.adaming.service.IAdminService;
 @RequestMapping("/admin")
 public class AdministrateurController {
 
+	// Commit
 	private IAdminService adminService;
 
 	/**

@@ -18,7 +18,7 @@ import fr.adaming.service.IProduitService;
 
 @Controller
 public class ImageCOntroller {
-
+	// Commit
 	@Autowired
 	private ICategorieService categorieService;
 	@Autowired

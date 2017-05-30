@@ -7,7 +7,7 @@ import fr.adaming.model.Admin;
 import fr.adaming.model.Categorie;
 
 public class AdminServiceImpl implements IAdminService {
-
+	// Commit
 	private IAdminDao admindao;
 
 	/**

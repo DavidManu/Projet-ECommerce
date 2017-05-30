@@ -16,7 +16,7 @@ import fr.adaming.model.Categorie;
 @Service
 @Transactional
 public class CategorieServiceImpl implements ICategorieService {
-
+	// Commit
 	/**
 	 * Injection de Dao
 	 *

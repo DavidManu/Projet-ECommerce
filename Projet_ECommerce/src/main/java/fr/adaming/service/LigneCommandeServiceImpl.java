@@ -14,7 +14,7 @@ import fr.adaming.model.LigneCommande;
 @Service
 @Transactional
 public class LigneCommandeServiceImpl implements ILigneCommandeService {
-	
+	// Commit
 
 	/**
 	 * Injection de Dao

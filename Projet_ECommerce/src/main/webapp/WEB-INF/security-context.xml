@@ -9,7 +9,7 @@
 
 <!-- declaration du bean dataSource -->
 	<context:property-placeholder location="classpath*:data-source.properties" />
-	
+	<!-- Commit -->
 	<bean id="dataSourceBean2"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="${jdbc.driver}" />

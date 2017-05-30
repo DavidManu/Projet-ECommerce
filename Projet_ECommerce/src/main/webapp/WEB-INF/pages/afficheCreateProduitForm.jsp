@@ -2,7 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-
+<!-- Commit -->
 <!DOCTYPE html >
 <html>
 <head>
@@ -69,19 +69,19 @@
 				<td>Selectionne :<form:input path="selectionne" /> <form:errors
 						path="selectionne" cssStyle="color:red"></form:errors>
 				</td>
-<!-- 				<td> -->
-<!-- 					<div class="form-group label-floating"> -->
-<!-- 						<label class="control-label">Categorie</label> -->
-<%-- 						<form:select path="categorie" --%>
-<%-- 							class="btn dropdown-toggle btn-sm btn-white col-sm-8" --%>
-<%-- 							required="true"> --%>
-<!-- 							<option disabled>Selectionner une catégorie</option> -->
-<%-- <							<c:forEach var="categorie" items="${cListe}"> --%>
-<%-- 								<option>${categorie.nomCategorie}</option> --%>
-<!-- 							</c:forEach> -->
-<%-- 						</form:select> --%>
-<!-- 					</div> -->
-<!-- 				</td> -->
+				<!-- 				<td> -->
+				<!-- 					<div class="form-group label-floating"> -->
+				<!-- 						<label class="control-label">Categorie</label> -->
+				<%-- 						<form:select path="categorie" --%>
+				<%-- 							class="btn dropdown-toggle btn-sm btn-white col-sm-8" --%>
+				<%-- 							required="true"> --%>
+				<!-- 							<option disabled>Selectionner une catégorie</option> -->
+				<%-- <							<c:forEach var="categorie" items="${cListe}"> --%>
+				<%-- 								<option>${categorie.nomCategorie}</option> --%>
+				<!-- 							</c:forEach> -->
+				<%-- 						</form:select> --%>
+				<!-- 					</div> -->
+				<!-- 				</td> -->
 				<br />
 				<br />
 				<input type="submit" value="Ajouter un Produit" />

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class LoginController {
-
+	// Commit
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String affichePageLogin() {
 		return "adminCatProd";

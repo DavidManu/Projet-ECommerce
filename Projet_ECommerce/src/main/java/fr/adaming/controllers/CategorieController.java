@@ -23,7 +23,7 @@ import fr.adaming.service.ICategorieService;
 @Controller
 @RequestMapping("/categorie")
 public class CategorieController {
-
+	// Commit
 	/**
 	 * Injection de la classeService dans le controller
 	 */

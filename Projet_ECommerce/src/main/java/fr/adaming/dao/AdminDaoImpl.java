@@ -11,7 +11,7 @@ import fr.adaming.model.Admin;
 import fr.adaming.model.Categorie;
 
 public class AdminDaoImpl implements IAdminDao {
-
+	// Commit
 	/**
 	 * Definition d'une session
 	 */

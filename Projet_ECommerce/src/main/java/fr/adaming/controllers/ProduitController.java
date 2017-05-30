@@ -29,7 +29,7 @@ public class ProduitController {
 	/**
 	 * Injection de la classeService dans le controller
 	 */
-
+	// Commit
 	@Autowired
 	private ICategorieService categorieService;
 

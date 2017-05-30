@@ -14,7 +14,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "clients")
 public class Client {
-
+	// Commit
 	// attributs
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

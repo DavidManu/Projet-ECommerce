@@ -13,7 +13,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="admins")
 public class Admin {
-
+	// Commit
 	//attributs
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

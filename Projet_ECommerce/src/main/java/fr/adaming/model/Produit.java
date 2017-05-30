@@ -115,7 +115,7 @@ public class Produit {
 	public void setDesignation(String designation) {
 		this.designation = designation;
 	}
-
+	// Commit
 	/**
 	 * @return the description
 	 */

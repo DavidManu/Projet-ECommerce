@@ -145,7 +145,7 @@ public class AuthenticationController {
 
 	@RequestMapping(value = "/ajouterLigneCommande/{idP}") // , method =
 															// RequestMethod.POST
-	public String addLigneCommande(ModelMap model, @PathVariable("idP") Long pId) {// ,@ModelAttribute("mIdProduit")
+	public String addLigneCommande(ModelMap model, @PathVariable("idP") int pId) {// ,@ModelAttribute("mIdProduit")
 																					// int
 																					// pIdProduit,
 																					// @ModelAttribute("mLigneCommande")
@@ -156,8 +156,8 @@ public class AuthenticationController {
 		lc_rec.setPrix((int) p_rec.getPrix());
 		lc_rec.setQuantite(1);
 		boolean rep = false;
-		for (LigneCommande lc : monPanier.getListLigneCommandes()) {
-			if (lc.getProduit().getIdProduit().equals(pId)) {
+		for ( LigneCommande lc : monPanier.getListLigneCommandes()) {
+			if (lc.getProduit().getIdProduit().same(pId)) {
 				rep = true;
 				lc.setQuantite(lc.getQuantite() + 1);
 			}
@@ -234,7 +234,7 @@ public class AuthenticationController {
 	///
 	// return "welcome";
 	// }
-//blalbla
+	// blalbla
 	@RequestMapping(value = "/adminCatProd/adminCatProdPage", method = RequestMethod.GET)
 	public String goToAdminCatProdPage(ModelMap model) {
 		// Récuperer l'admin cat qui vient de se connecter

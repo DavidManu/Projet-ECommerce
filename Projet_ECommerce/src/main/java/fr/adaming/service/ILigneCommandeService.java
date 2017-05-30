@@ -19,4 +19,4 @@ public interface ILigneCommandeService {
 	 */
 	public String deleteLigneCommande(long id);
 
-}
+}// Commit

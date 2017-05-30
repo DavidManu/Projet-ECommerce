@@ -22,4 +22,4 @@ public interface IProduitService {
 
 	public List<Produit> getAllProduitsSelectionnes();
 
-}
+}// Commit

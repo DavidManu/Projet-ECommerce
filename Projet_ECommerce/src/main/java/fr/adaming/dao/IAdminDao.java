@@ -10,3 +10,4 @@ public interface IAdminDao {
 
 	public Admin createAdmin(Admin a);
 }
+//Commit

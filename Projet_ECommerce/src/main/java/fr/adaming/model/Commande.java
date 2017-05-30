@@ -20,7 +20,7 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "commandes")
 public class Commande {
-
+	// Commit
 	// attributs
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

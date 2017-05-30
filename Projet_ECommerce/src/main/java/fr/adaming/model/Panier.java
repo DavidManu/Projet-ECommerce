@@ -3,7 +3,7 @@ package fr.adaming.model;
 import java.util.List;
 
 public class Panier {
-
+	// Commit
 	// attributs
 	private double total;
 

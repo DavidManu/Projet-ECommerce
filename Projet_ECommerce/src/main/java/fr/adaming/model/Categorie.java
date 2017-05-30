@@ -16,7 +16,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "categories")
 public class Categorie {
-
+	// Commit
 	// attributs
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

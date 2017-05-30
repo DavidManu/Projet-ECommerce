@@ -14,7 +14,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="roles")
 public class Role {
-	
+	// Commit
 	//attributs
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

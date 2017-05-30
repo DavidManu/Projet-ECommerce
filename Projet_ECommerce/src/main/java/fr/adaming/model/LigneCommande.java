@@ -13,7 +13,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "lignecommandes")
 public class LigneCommande {
-
+	// Commit
 	// attributs
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

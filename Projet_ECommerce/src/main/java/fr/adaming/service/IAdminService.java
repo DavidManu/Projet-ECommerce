@@ -9,5 +9,5 @@ public interface IAdminService {
 	public List<Admin> getAllAdmin();
 	
 	public Admin createAdmin(Admin a);
-
+	// Commit
 }
