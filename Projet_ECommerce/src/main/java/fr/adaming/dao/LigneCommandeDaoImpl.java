@@ -49,9 +49,9 @@ public class LigneCommandeDaoImpl implements ILigneCommandeDao {
 	 * rend une ligne de commande
 	 */
 	@Override
-	public LigneCommande getOneLigneCommande(LigneCommande lc) {
+	public LigneCommande getOneLigneCommande(Long id) {
 		Session s = sf.getCurrentSession();
-		return (LigneCommande) s.get(LigneCommande.class, lc.getIdCommande());
+		return (LigneCommande) s.get(LigneCommande.class, id);
 	}
 
 	/**

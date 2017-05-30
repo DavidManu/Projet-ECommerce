@@ -41,8 +41,8 @@ public class LigneCommandeServiceImpl implements ILigneCommandeService {
 	 * rend une ligne de commande
 	 */
 	@Override
-	public LigneCommande getOneLigneCommande(LigneCommande lc) {
-		return ligneCommandeDao.getOneLigneCommande(lc);
+	public LigneCommande getOneLigneCommande(Long id) {
+		return ligneCommandeDao.getOneLigneCommande(id);
 	}
 
 	/**

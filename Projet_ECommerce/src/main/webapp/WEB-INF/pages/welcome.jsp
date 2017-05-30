@@ -143,15 +143,9 @@
 					<td>${produit.quantite}</td>
 					<td>${produit.description}</td>
 					<td>${produit.photo}</td>
-					<td><form:form action="authentication/ajouterLigneCommande" method="POST" modelAttribute="mLigneCommande">
-							<form:input path="quantite" />
-							<form:errors path="quantite" cssStyle="color:red"></form:errors>
-							<form:input path="produit" hidden="true" value="${produit.idProduit}"/>
-							<form:errors path="produit" cssStyle="color:red"></form:errors>
-							<form:input path="prix" hidden="true" value="${produit.prix}"/>
-							<form:errors path="prix" cssStyle="color:red"></form:errors>
-							<input type="submit" value="Ajouter au pannier" />
-						</form:form></td>
+					<td><a
+						href="${pageContext.request.contextPath}/authentication/ajouterLigneCommande/${produit.idProduit}"
+						class="btn btn-default btn-xl sr-button">Ajouter au panier</a></td>
 				</tr>
 			</c:forEach>
 		</table>
@@ -161,42 +155,33 @@
 	<!-- pannier -->
 	<div class="navbar-left"
 		style="background-color: white; width: auto; height: auto; position: fixed; box-shadow: 10px 10px 5px #888888; margin-top: -360px">
-		<div class="text-center center-block">
-			<br />
-			<p class="txt-railway" style="font-weight: bold">Mon panier</p>
-			<table class="table" style="width: 100%">
+
+		<br />
+		<p class="txt-railway" style="font-weight: bold">Mon panier</p>
+		<table class="table" style="width: 100%">
+			<tr>
+				<th>Designation</th>
+				<th>Prix</th>
+				<th>Quantité</th>
+				<th>Operation</th>
+			</tr>
+
+			<c:forEach var="ligneCommande" items="${lcListe}">
 				<tr>
-					<th>Designation</th>
-					<th>Prix</th>
-					<th>Quantité</th>
-					<th>Operation</th>
+					<td>${ligneCommande.produit.getDesignation()}</td>
+					<td>${ligneCommande.prix}</td>
+					<td>${ligneCommande.quantite}</td>
+					<td><a
+						href="${pageContext.request.contextPath}/authentication/supprimerLigneCommande/${ligneCommande.produit.getDesignation()}"
+						class="btn btn-default btn-xl sr-button">supprimer</a></td>
 				</tr>
+			</c:forEach>
+		</table>
+		<p>Prix total: ${panierTot} euros</p>
+		<a
+			href="${pageContext.request.contextPath}/authentication/validerCommande/"
+			class="btn btn-default btn-xl sr-button">Valider la commande</a>
 
-				<c:forEach var="ligneCommande"
-					items="${monPannier.getListLigneCommandes()}">
-					<tr>
-						<td>${ligneCommande.idCommande}</td>
-						<td>${ligneCommande.quantite}</td>
-						<td>${ligneCommande.prix}</td>
-						<td><a
-							href="${pageContext.request.contextPath}/produit/addToBasket/${personne.id}"
-							class="btn btn-default btn-xl sr-button">Supprimer du pannier</a></td>
-					</tr>
-				</c:forEach>
-			</table>
-
-<%-- <form:form action="authentication/ajouterLigneCommande" method="POST" modelAttribute="mLigneCommande"> --%>
-
-<%-- 							<form:input path="produit" value="${produit}"/> --%>
-<%-- 							<form:errors path="produit" cssStyle="color:red"></form:errors> --%>
-<%-- 							<form:input path="quantite" /> --%>
-<%-- 							<form:errors path="quantite" cssStyle="color:red"></form:errors> --%>
-
-<%-- 							<form:input path="prix" hidden="true" value="${produit.prix}"/> --%>
-<%-- 							<form:errors path="prix" cssStyle="color:red"></form:errors> --%>
-<!-- 							<input type="submit" value="Ajouter au pannier" /> -->
-<%-- 						</form:form> --%>
-		</div>
 	</div>
 
 

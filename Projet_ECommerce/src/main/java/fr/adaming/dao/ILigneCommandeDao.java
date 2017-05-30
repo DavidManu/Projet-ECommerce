@@ -7,7 +7,7 @@ public interface ILigneCommandeDao {
 	/**
 	 * rend une ligne de commande
 	 */
-	public LigneCommande getOneLigneCommande(LigneCommande lc);
+	public LigneCommande getOneLigneCommande(Long id);
 
 	/**
 	 * créé une ligne de commande
