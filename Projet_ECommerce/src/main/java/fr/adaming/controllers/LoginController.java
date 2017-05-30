@@ -34,8 +34,5 @@ public class LoginController {
 
 	}
 
-	public String add() {
-		return null;
-
-	}
+	
 }
