@@ -93,7 +93,7 @@
 				<div class="header-content">
 					<div class="header-content-inner">
 						<h2 id="homeHeading" style="text-align: center">Bienvenue
-							dans votre Online shop!</h2>
+							dans votre espace de gestion des categories!</h2>
 						<hr>
 					</div>
 				</div>
@@ -102,52 +102,59 @@
 
 			<br /> <br />
 
-
-			<div style="color: blue; font-style: italic; font-size: 14pt">
-				<a href="${pageContext.request.contextPath}/produit/categories">Cliquez
-					Ici pour afficher la liste des categories</a>
-			</div>
-
 			<div style="color: blue; font-style: italic; font-size: 14pt">
 				<a
-					href="${pageContext.request.contextPath}/produit/afficheCreateCategorieForm">Cliquez
+					href="${pageContext.request.contextPath}/categorie/afficheCreateCategorieForm">Cliquez
 					Ici pour ajouter une categorie à la liste des categories</a>
 			</div>
 
-			<h4>Voici les produits disponibles:</h4>
+			<div style="color: blue; font-style: italic; font-size: 8pt">
+				Catégorie recherchée: <input type="text" value="${categorie.nomCategorie}" /> <br /> 
+					<input type="submit"
+					value="Rechercher">
+			</div>
+
+			<h4>Voici les categories disponibles:</h4>
 
 			<div style="text-align: center">
-				<table width="100%" cellpadding="6">
+				<input name="champCache" type="hidden"
+					value="${categorie.nomCategorie}" />
+				<TABLE width=100% border=10 CELLPADDING=CELLSPACING=10>
+					<CAPTION ALIGN=bottom color="blue">Table récapitulative
+						des catégories existantes</CAPTION>
 					<tr
-						style="background-color: grey; color: white; text-align: center">
-
-						<th>ID</th>
-						<th>Nom</th>
-						<th>Description</th>
-						<th>Photo</th>
-						<th>Commande</th>
-
-
+						style="background-color: blue; color: white; text-align: center">
+						<th style="text-align: center">ID</th>
+						<th style="text-align: center">Nom</th>
+						<th style="text-align: center">Description</th>
+						<th style="text-align: center">Photo</th>
+						<th style="text-align: center">Commande</th>
 					</tr>
 					<c:forEach var="categorie" items="${cListe}">
 						<tr>
-
 							<td>${categorie.idCategorie}</td>
 							<td>${categorie.nomCategorie}</td>
 							<td>${categorie.description}</td>
-							<td>${categorie.photo}</td>
-							<td><a
-								href="${pageContext.request.contextPath}/categorie/delete/${categorie.idCategorie}">Supprimer</a>
-								| <a
-								href="${pageContext.request.contextPath}/categorie/edit?idCategorie=${categorie.idCategorie}">Editer</a></td>
-							<%-- 					<td>${}</td> --%>
-
-							<%-- <td><a href="${pageContext.request.contextPath}/personne/delete/${personne.id}">Ajouter au pannier</a></td> --%>
+							<td><img
+								src="${pageContext.request.contextPath}/img/categorie/${categorie.idCategorie}" /></td>
+							<td class="text-right" style="text-align: center">
+								<button type="button" title="Edit"
+									class="btn btn-success btn-simple btn-xs"
+									onclick="location.href='${pageContext.request.contextPath}/categorie/edit?idCategorie=${categorie.idCategorie}'">
+									<i class="material-icons">Editer</i>
+								</button>
+								<button type="button" title="Remove"
+									class="btn btn-danger btn-simple btn-xs"
+									onclick="location.href='${pageContext.request.contextPath}/categorie/delete/${categorie.idCategorie}'">
+									<i class="material-icons">Supprimer</i>
+								</button>
+							</td>
 						</tr>
 					</c:forEach>
-				</table>
+				</TABLE>
 			</div>
 		</div>
+
 
 		<div class="navbar-fixed-bottom"
 			style="background-color: #662200; box-shadow: 10px 10px 5px #888888; color: white; font-weight: bold;">

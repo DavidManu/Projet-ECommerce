@@ -219,21 +219,21 @@ public class AuthenticationController {
 		return "welcome";
 	}
 
-//	@RequestMapping(value = "/AaliderCommande/{idDes}")
-//	public String validateCommande(ModelMap model) {
-//		List<LigneCommande> lcremove = new ArrayList<>();
-//
-//		monPanier.getListLigneCommandes().removeAll(lcremove);
-//		System.out.println("je sors des if");
-//		List<Produit> listeProduits = produitService.getAllProduit();
-//		model.addAttribute("pListe", listeProduits);
-//		List<Categorie> listeCategories = categorieService.getAllCategorie();
-//		model.addAttribute("cListe", listeCategories);
-//		model.addAttribute("lcListe", monPanier.getListLigneCommandes());
-//		model.addAttribute("panierTot", monPanier.getTotal());
-///
-//		return "welcome";
-//	}
+	// @RequestMapping(value = "/AaliderCommande/{idDes}")
+	// public String validateCommande(ModelMap model) {
+	// List<LigneCommande> lcremove = new ArrayList<>();
+	//
+	// monPanier.getListLigneCommandes().removeAll(lcremove);
+	// System.out.println("je sors des if");
+	// List<Produit> listeProduits = produitService.getAllProduit();
+	// model.addAttribute("pListe", listeProduits);
+	// List<Categorie> listeCategories = categorieService.getAllCategorie();
+	// model.addAttribute("cListe", listeCategories);
+	// model.addAttribute("lcListe", monPanier.getListLigneCommandes());
+	// model.addAttribute("panierTot", monPanier.getTotal());
+	///
+	// return "welcome";
+	// }
 
 	@RequestMapping(value = "/adminCatProd/adminCatProdPage", method = RequestMethod.GET)
 	public String goToAdminCatProdPage(ModelMap model) {

@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -18,12 +19,13 @@ public class Produit {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_p")
-	private Long idProduit;
+	private long idProduit;
 	private String designation;
 	private String description;
 	private double prix;
 	private int quantite;
 	private boolean selectionne;
+	@Lob
 	private byte[] photo;
 
 	// association
@@ -71,7 +73,7 @@ public class Produit {
 	 * @param selectionne
 	 * @param photo
 	 */
-	public Produit(Long idProduit, String designation, String description, double prix, int quantite,
+	public Produit(int idProduit, String designation, String description, double prix, int quantite,
 			boolean selectionne, byte[] photo) {
 		super();
 		this.idProduit = idProduit;
@@ -87,7 +89,7 @@ public class Produit {
 	/**
 	 * @return the idProduit
 	 */
-	public Long getIdProduit() {
+	public int getIdProduit() {
 		return idProduit;
 	}
 
@@ -95,7 +97,7 @@ public class Produit {
 	 * @param idProduit
 	 *            the idProduit to set
 	 */
-	public void setIdProduit(Long idProduit) {
+	public void setIdProduit(int idProduit) {
 		this.idProduit = idProduit;
 	}
 
@@ -203,7 +205,6 @@ public class Produit {
 	public void setCategorie(Categorie categorie) {
 		this.categorie = categorie;
 	}
-
 
 	// toString
 	/*

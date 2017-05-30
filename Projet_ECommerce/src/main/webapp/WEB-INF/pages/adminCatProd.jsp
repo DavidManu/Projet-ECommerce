@@ -28,75 +28,84 @@
 
 </head>
 
-<body >
-<div style="background-image: url('/resources/image/whitebrick.jpg')">
+<body>
 
-	<nav id="mainNav" class="navbar navbar-default navbar-fixed-top"
-		style="background-color: #662200; box-shadow: 10px 10px 5px #888888;">
-		<div class="container-fluid">
-			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
-				<!-- 				<button type="button" class="navbar-toggle collapsed" -->
-				<!-- 					data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> -->
-				<!-- 					<span class="sr-only">Toggle navigation</span> Menu <i -->
-				<!-- 						class="fa fa-bars"></i> -->
-				<!-- 				</button> -->
-				<a class="navbar-brand page-scroll"
-					href="${pageContext.request.contextPath}/authentication"
-					style="color: white; font-weight: bold;"> Shop </a>
+	<div>
+		<nav id="mainNav" class="navbar navbar-default navbar-fixed-top"
+			style="background-color: #662200; box-shadow: 10px 10px 5px #888888;">
+			<div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+
+					<a class="navbar-brand page-scroll"
+						href="${pageContext.request.contextPath}/authentication"
+						style="color: white; font-weight: bold;"> Shop </a>
+				</div>
+
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse"
+					id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a class="page-scroll" href="#about"
+							style="color: white; font-weight: bold;">About</a></li>
+						<li class="nav-item dropdown"><a
+							class="nav-link dropdown-toggle" id="navbarDropdownMenuLink"
+							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+							style="color: white; font-weight: bold;"> Login </a>
+							<div class="dropdown-menu"
+								aria-labelledby="navbarDropdownMenuLink">
+
+								<form action="j_spring_security_check" method="post">
+
+									Login: <input type="text" name="j_username" /> <br /> Mot de
+									passe: <input type="text" name="j_password" /> <br /> <input
+										type="submit" value="se connecter">
+
+								</form>
+								<c:if test="${not empty erreur}">
+									<h1 style="color: red">Tu t'es trompé sur le Login ou Mdp
+										tu n'as pas plus qu'a trouvé lequel</h1>
+								</c:if>
+
+								<a class="dropdown-item"
+									href="${pageContext.request.contextPath}/authentication/adminCatProd/adminCatProdPage"
+									style="background-color: #662200; color: white; font-weight: bold;">As
+									general admin</a> <br /> <a class="dropdown-item"
+									href="${pageContext.request.contextPath}/authentication/adminProd/transition"
+									style="background-color: #662200; color: white; font-weight: bold;">As
+									product admin</a>
+
+							</div></li>
+					</ul>
+				</div>
+				<!-- /.navbar-collapse -->
 			</div>
-
-			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse"
-				id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav navbar-right">
-					<li><a class="page-scroll" href="#about"
-						style="color: white; font-weight: bold;">About</a></li>
-					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" id="navbarDropdownMenuLink"
-						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-						style="color: white; font-weight: bold;"> Login </a>
-						<div class="dropdown-menu"
-							aria-labelledby="navbarDropdownMenuLink">
-
-							<form action="j_spring_security_check" method="post">
-
-								Login: <input type="text" name="j_username" /> <br /> Mot de
-								passe: <input type="text" name="j_password" /> <br /> <input
-									type="submit" value="se connecter">
-
-							</form>
-							<c:if test="${not empty erreur}">
-								<h1 style="color: red">Tu t'es trompé sur le Login ou Mdp
-									tu n'as pas plus qu'a trouvé lequel</h1>
-							</c:if>
-
-							<a class="dropdown-item"
-								href="${pageContext.request.contextPath}/authentication/adminCatProd/adminCatProdPage"
-								style="background-color: #662200; color: white; font-weight: bold;">As
-								general admin</a> <br /> <a class="dropdown-item"
-								href="${pageContext.request.contextPath}/authentication/adminProd/transition"
-								style="background-color: #662200; color: white; font-weight: bold;">As
-								product admin</a>
-
-						</div></li>
-				</ul>
+			<!-- /.container-fluid -->
+		</nav>
+		<div>
+			<div class="navbar-left" style="margin-left: 3%; margin-top: 5%;">
+				<menu>
+					<img src="resources/image/musicien_016.gif" />
+				</menu>
 			</div>
-			<!-- /.navbar-collapse -->
+			<div class="navbar-left" style="margin-left: 0%; margin-top: 20%;">
+				<menu>
+					<img src="resources/image/danse_047.gif" />
+				</menu>
+			</div>
 		</div>
-		<!-- /.container-fluid -->
-	</nav>
-
+	</div>
 	<br />
 	<br />
 	<br />
 
 	<div style="margin-left: 30%; margin-right: 10%;">
 		<header>
+
 			<div class="header-content">
 				<div class="header-content-inner">
-					<h2 id="homeHeading" style="text-align: center">Bienvenu dans
-						votre Online shop!</h2>
+					<h2 id="homeHeading" style="text-align: center">Bienvenue
+						Monsieur A Que desirez vous faie en tant qu'administrateur général</h2>
 					<hr>
 				</div>
 			</div>
@@ -113,57 +122,43 @@
 				<option data-icon="glyphicon-heart">Livres</option>
 			</select>
 		</form>
-		<div >
-			<br /> <br />
-			<h3>
-
-				<a href="${pageContext.request.contextPath}/produit/produitAdmin">Gerer
-					les produits</a>
-			
-			</h3>
-
-			<h3>
-				<a href="${pageContext.request.contextPath}/categorie/categorieAdmin">Gerer
-					les categories</a>
-			</h3>
-
-
-			<h3>
-				<a href="${pageContext.request.contextPath}/categorie/categorieAdmin">Gerer
-					les administrateurs</a>
-			</h3>
-
+		<br /> <br /> <br /> <br />
+		<div style="">
+			<button style="block-border: 10; width: 100%" type="button"
+				title="Gestion des produits"
+				class="btn btn-primary btn-simple btn-xs"
+				onclick="location.href='${pageContext.request.contextPath}/produit/produitAdmin'">
+				<i class="material-icons"><h4 color="white">Gerer les
+						produits</h4></i>
+			</button>
 		</div>
+		<br /> <br /> <br /> <br />
+		<div style="width: 100%">
+			<button style="block-border: 10; width: 100%" type="button"
+				title="Gestion des categories"
+				class="btn btn-info btn-simple btn-xs"
+				onclick="location.href='${pageContext.request.contextPath}/categorie/listeCategorie'">
+				<i class="material-icons"><h4 color="white">Gerer les
+						Categories</h4></i>
+			</button>
+		</div>
+		<br /> <br /> <br /> <br />
+		<div>
+			<button style="block-border: 10; width: 100%" type="button"
+				title="Gestion des administrateurs"
+				class="btn btn-warning btn-simple btn-xs"
+				onclick="location.href='${pageContext.request.contextPath}/admin/insererAdmin'">
+				<i class="material-icons"><h4 color="white">Gerer les
+						Administrateurs</h4></i>
+			</button>
+		</div>
+		<br /> <br />
+
 	</div>
+
 
 	<!-- pannier -->
-	<div class="navbar-left"
-		style="background-color: white; width: auto; height: auto; position: fixed; box-shadow: 10px 10px 5px #888888; margin-top: -160px">
-		<div class="text-center center-block">
-			<br />
-			<p class="txt-railway" style="font-weight: bold">Mon panier</p>
-			<table class="table" style="width: 100%">
-				<tr>
-					<th>Designation</th>
-					<th>Prix</th>
-					<th>Quantité</th>
-					<th>Operation</th>
-				</tr>
 
-				<c:forEach var="produit" items="${pListe}">
-					<tr>
-						<td>${produit.designation}</td>
-						<td>${produit.prix}</td>
-						<td>${produit.quantite}</td>
-						<td><a
-							href="${pageContext.request.contextPath}/produit/addToBasket/${personne.id}"
-							class="btn btn-default btn-xl sr-button">Supprimer du pannier</a></td>
-					</tr>
-				</c:forEach>
-			</table>
-
-		</div>
-	</div>
 
 
 	<div class="navbar-fixed-bottom"
@@ -199,6 +194,6 @@
 
 	<!-- Theme JavaScript -->
 	<script src='<c:url value="/resources/js/creative.min.js" />'></script>
-	</div>
+
 </body>
 </html>

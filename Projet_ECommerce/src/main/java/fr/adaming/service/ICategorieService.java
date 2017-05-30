@@ -8,12 +8,12 @@ public interface ICategorieService {
 
 	public List<Categorie> getAllCategorie();
 
-	public Categorie getOneCategorie(Categorie c);
+	public Categorie getOneCategorie(int id);
 
 	public Categorie createCategorie(Categorie c);
 
-	public String deleteCategorie(long id);
+	public String deleteCategorie(int id);
 
-	public Categorie updateCategorie(long id);
+	public Categorie updateCategorie(Categorie c);
 
 }

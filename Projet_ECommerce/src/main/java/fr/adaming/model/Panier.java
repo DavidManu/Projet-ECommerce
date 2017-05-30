@@ -1,6 +1,5 @@
 package fr.adaming.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Panier {
@@ -9,7 +8,7 @@ public class Panier {
 	private double total;
 
 	// association
-	private List<LigneCommande> listLigneCommandes=new ArrayList<>();
+	private List<LigneCommande> listLigneCommandes;
 
 	// contructeurs
 	/**

@@ -1,6 +1,9 @@
 package fr.adaming.controllers;
 
+import java.awt.image.BufferedImage;
 import java.util.List;
+
+import javax.imageio.ImageIO;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import fr.adaming.model.Categorie;
@@ -62,15 +66,15 @@ public class CategorieController {
 	}
 
 	/**
-		 * Generation de la liste des categories
-		 */
-		@RequestMapping(value = "/listeCategorie", method = RequestMethod.GET)
-		public String afficherListeCategories(ModelMap model) {
+	 * Generation de la liste des categories
+	 */
+	@RequestMapping(value = "/listeCategorie", method = RequestMethod.GET)
+	public String afficherListeCategories(ModelMap model) {
 
-			List<Categorie> listeCategories = categorieService.getAllCategorie();
-			model.addAttribute("cListe", listeCategories);
-			return "categories";
-		}
+		List<Categorie> listeCategories = categorieService.getAllCategorie();
+		model.addAttribute("cListe", listeCategories);
+		return "categories";
+	}
 
 	/**
 	 * Ajout d'un produit à liste de categories
@@ -84,8 +88,8 @@ public class CategorieController {
 	}
 
 	@RequestMapping(value = "/insererCategorie", method = RequestMethod.POST)
-	public String ajouterCategorie(@ModelAttribute("mCategorie") Categorie pCategorie, ModelMap model, BindingResult result)
-			throws Exception {
+	public String ajouterCategorie(@ModelAttribute("mCategorie") Categorie pCategorie, ModelMap model,
+			BindingResult result) throws Exception {
 
 		if (result.hasErrors()) {
 			return "afficheCreateCategorieForm";
@@ -102,25 +106,34 @@ public class CategorieController {
 	 */
 
 	@RequestMapping(value = "/edit", method = RequestMethod.GET)
-	public ModelAndView affichFormEdit(@RequestParam("idCategorie") long id) {
+	public ModelAndView affichFormEdit(@RequestParam("idCategorie") int id) {
 
-		Categorie c = new Categorie();
-		c.setIdCategorie(id);
-		Categorie c_rec = categorieService.getOneCategorie(c);
 		String viewName = "afficheCreateCategorieForm";
-		return new ModelAndView(viewName, "mCategorie", c_rec);
+		return new ModelAndView(viewName, "mCategorie", categorieService.getOneCategorie(id));
 	}
 
 	@RequestMapping(value = "/delete/{idCategorie}", method = RequestMethod.GET)
-	public String supprimerCategorie(ModelMap model, @PathVariable("idCategorie") long id) {
+	public String supprimerCategorie(ModelMap model, @PathVariable("idCategorie") int id) {
 
-		Categorie c = new Categorie();
-		c.setIdCategorie(id);
-		Categorie c_rec = categorieService.getOneCategorie(c);
+		Categorie c_rec = categorieService.getOneCategorie(id);
 		categorieService.deleteCategorie(c_rec.getIdCategorie());
 		model.addAttribute("cListe", categorieService.getAllCategorie());
 
 		return "categories";
+	}
+
+	@RequestMapping(value = "/gestion/categorie/submit", method = RequestMethod.POST)
+	public ModelAndView doSubmit(@ModelAttribute Categorie mCategorie, MultipartFile file) throws Exception {
+		if (!file.isEmpty()) {
+			BufferedImage bi = ImageIO.read(file.getInputStream());
+			mCategorie.setPhoto(file.getBytes());
+		}
+		if (mCategorie.getIdCategorie() == 0) {
+			categorieService.createCategorie(mCategorie);
+		} else {
+			categorieService.updateCategorie(mCategorie);
+		}
+		return new ModelAndView("Page-listecategories", "pListe", categorieService.getAllCategorie());
 	}
 
 }

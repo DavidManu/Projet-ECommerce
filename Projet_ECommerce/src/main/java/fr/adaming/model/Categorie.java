@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -20,8 +21,9 @@ public class Categorie {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_ca")
-	private Long idCategorie;
+	private int idCategorie;
 	private String nomCategorie;
+	@Lob
 	private byte[] photo;
 	private String description;
 
@@ -56,7 +58,7 @@ public class Categorie {
 	 * @param description
 	 * @param listProduits
 	 */
-	public Categorie(Long idCategorie, String nomCategorie, byte[] photo, String description,
+	public Categorie(int idCategorie, String nomCategorie, byte[] photo, String description,
 			List<Produit> listProduits) {
 		super();
 		this.idCategorie = idCategorie;
@@ -70,7 +72,7 @@ public class Categorie {
 	/**
 	 * @return the idCategorie
 	 */
-	public Long getIdCategorie() {
+	public int getIdCategorie() {
 		return idCategorie;
 	}
 
@@ -78,7 +80,7 @@ public class Categorie {
 	 * @param idCategorie
 	 *            the idCategorie to set
 	 */
-	public void setIdCategorie(Long idCategorie) {
+	public void setIdCategorie(int idCategorie) {
 		this.idCategorie = idCategorie;
 	}
 

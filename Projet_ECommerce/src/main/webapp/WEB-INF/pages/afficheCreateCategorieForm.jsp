@@ -9,7 +9,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-
 <!-- Bootstrap Core CSS -->
 <link
 	href='<c:url value="/resources/vendor/bootstrap/css/bootstrap.css" />'
@@ -32,95 +31,90 @@
 </head>
 <body>
 
-	
+	<nav id="mainNav" class="navbar navbar-default navbar-fixed-top"
+		style="background-color: #662200; box-shadow: 10px 10px 5px #888888;">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
 
-		<div style="text-align: center">
-			<header>
-				<div class="header-content">
-					<div class="header-content-inner">
-						<h2 id="homeHeading" style="text-align: center">Bienvenue
-							dans votre Online shop!</h2>
-						<hr>
-					</div>
-				</div>
-			</header>
-
-
-			<br /> <br />
-
-
-		
-
-			<h4>Voici les categories disponibles:</h4>
-
-			<div style="text-align: center">
-
-
-				<table width="100%" cellpadding="6">
-					<tr
-						style="background-color: grey; color: white; text-align: center">
-
-						<th>ID</th>
-						<th>Nom</th>
-						<th>Description</th>
-						<th>Photo</th>
-						<th>Commande</th>
-
-
-					</tr>
-					<c:forEach var="categorie" items="${cListe}">
-						<tr>
-
-							<td>${categorie.idCategorie}</td>
-							<td>${categorie.nomCategorie}</td>
-							<td>${categorie.description}</td>
-							<td>${categorie.photo}</td>
-							<td><a
-								href="${pageContext.request.contextPath}/categorie/delete/${categorie.idCategorie}">Supprimer</a>
-								| <a
-								href="${pageContext.request.contextPath}/categorie/edit?idCategorie=${categorie.idCategorie}">Editer</a></td>
-							<%-- 					<td>${}</td> --%>
-
-							<%-- <td><a href="${pageContext.request.contextPath}/personne/delete/${personne.id}">Ajouter au pannier</a></td> --%>
-						</tr>
-					</c:forEach>
-				</table>
-
+				<a class="navbar-brand page-scroll"
+					href="${pageContext.request.contextPath}/authentication"
+					style="color: white; font-weight: bold;"> Shop </a>
 			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse"
+				id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a class="page-scroll" href="#about"
+						style="color: white; font-weight: bold;">About</a></li>
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" id="navbarDropdownMenuLink"
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+						style="color: white; font-weight: bold;"> Login </a>
+						<div class="dropdown-menu"
+							aria-labelledby="navbarDropdownMenuLink"></div></li>
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
 		</div>
+		<!-- /.container-fluid -->
+	</nav>
+
+	<div style="text-align: center">
+		<header>
+			<div class="header-content">
+				<div class="header-content-inner">
+					<h2 id="homeHeading" style="text-align: center">Bienvenue dans
+						votre espace de gestion des categories musicales!</h2>
+					<h2 id="homeHeading" style="text-align: center">Ajouter votre
+						categorie et faites partager vos envies</h2>
+					<hr>
+				</div>
+			</div>
+		</header>
+
+		<br /> <br />
+	</div>
+
+	<form:form enctype="multipart/form-data">
+		<table width="100%" cellpadding="6" style="text_align: center">
+			<tr style="text-align: center; background-color: grey; color: white">
+				<form:form action="insererCategorie" method="POST"
+					modelAttribute="mCategorie" style="text_align: center">
 
 
-	
-	<h1 style="background-color: grey; color: white; text_align: center">
-		<b>L'ajout a bien été pris en compte</b>
-	</h1>
+					<td>Nom de la Categorie:<form:input path="nomCategorie" /> <form:errors
+							path="nomCategorie" cssStyle="color:red"></form:errors> <br />
+					</td>
+					<td>Description:<form:input path="description" /> <form:errors
+							path="description" cssStyle="color:red"></form:errors> <br />
+					</td>
+					<td>
+						<div class="input-group">
+							<span class="input-group-addon"> <i class="material-icons">Inserer
+									une photo</i>
+							</span>
+							<div class="form-group">
+								<a class="btn btn-default btn-xs col-sm-8"><input
+									type="file" name="file"></a>
+							</div>
+						</div>
+					</td>
+					<td><input type="submit" value="Ajouter une Categorie" /></td>
+					<br />
+					<br />
 
-	<form:form action="insererCategorie" method="POST"
-		modelAttribute="mCategorie">
+				</form:form>
+			</tr>
+		</table>
 
-		<!-- 		<table width="100%"> -->
-		
-		Nom de la Categorie:<form:input path="nomCategorie" />
-		<form:errors path="nomCategorie" cssStyle="color:red"></form:errors>
-		<br />
-		
-			Description:<form:input path="description" />
-		<form:errors path="description" cssStyle="color:red"></form:errors>
-		<br />
-		<%-- 					Photo : <form:input path="photo" /> --%>
-		<%-- 		<form:errors path="photo" cssStyle="color:red"></form:errors> --%>
-		<!-- 		<br /> -->
-
-		<br />
-		<br />
-		<input type="submit" value="Ajouter une Categorie" />
 	</form:form>
-
-
 
 	<div class="navbar-fixed-bottom"
 		style="background-color: #662200; box-shadow: 10px 10px 5px #888888; color: white; font-weight: bold;">
 		<div class="text-center center-block">
+
 			<br />
 			<p class="txt-railway" style="font-weight: bold">Contact us</p>
 			<a href="https://www.facebook.com/manulltt"><i id="social-fb"

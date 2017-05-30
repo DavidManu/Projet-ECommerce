@@ -58,7 +58,8 @@
 							<div class="dropdown-menu"
 								aria-labelledby="navbarDropdownMenuLink">
 
-								<form action="j_spring_security_check" method="post" style="text-align:center">
+								<form action="j_spring_security_check" method="post"
+									style="text-align: center">
 
 									Login: <input type="text" name="j_username" /> <br /> Mot de
 									passe: <input type="text" name="j_password" /> <br /> <input
@@ -141,7 +142,8 @@
 							<td>${produit.prix}</td>
 							<td>${produit.quantite}</td>
 							<td>${produit.description}</td>
-							<td>${produit.photo}</td>
+							<td><img
+								src="${pageContext.request.contextPath}/img/produit/${produit.idProduit}" /></td>
 							<td><a
 								href="${pageContext.request.contextPath}/produit/delete/${produit.idProduit}">Supprimer</a>
 								| <a

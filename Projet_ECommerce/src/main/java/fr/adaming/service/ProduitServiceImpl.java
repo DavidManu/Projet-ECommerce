@@ -54,7 +54,7 @@ public class ProduitServiceImpl implements IProduitService {
 	}
 
 	@Override
-	public Produit getOneProduit(Long id) {
+	public Produit getOneProduit(int id) {
 		return produitDao.getOneProduit(id);
 	}
 
@@ -64,15 +64,31 @@ public class ProduitServiceImpl implements IProduitService {
 	}
 
 	@Override
-	public String deleteProduit(long id) {
+	public String deleteProduit(int id) {
 		return produitDao.deleteProduit(id);
 
 	}
 
 	@Override
-	public Produit updateProduit(long id) {
-		return produitDao.updateProduit(id);
+	public Produit updateProduit(Produit p) {
+		return produitDao.updateProduit(p);
 
+	}
+
+	@Override
+	public List<Produit> getProduitsParCategorie(int id) {
+
+		return produitDao.getProduitsParCategorie(id);
+	}
+
+	@Override
+	public List<Produit> getProduitsParMotCle(String motcle) {
+		return produitDao.getProduitsParMotCle(motcle);
+	}
+
+	@Override
+	public List<Produit> getAllProduitsSelectionnes() {
+		return produitDao.getAllProduitsSelectionnes();
 	}
 
 }
