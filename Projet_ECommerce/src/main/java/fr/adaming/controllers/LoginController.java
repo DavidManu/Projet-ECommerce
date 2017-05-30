@@ -8,30 +8,34 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class LoginController {
 
-	@RequestMapping(value="/login",method=RequestMethod.GET)
-	public String affichePageLogin(){
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String affichePageLogin() {
 		return "adminCatProd";
 	}
-	
-	@RequestMapping(value="/logout",method=RequestMethod.GET)
-	public String logoutMethode(){
+
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String logoutMethode() {
 		return "adminCatProdPage";
 	}
-	
-	
-	@RequestMapping(value="/denied",method=RequestMethod.GET)
-	public String deniedMethode(){
+
+	@RequestMapping(value = "/denied", method = RequestMethod.GET)
+	public String deniedMethode() {
 		return "adminCatProdPage";
 	}
-	
-	@RequestMapping(value="/echec",method=RequestMethod.GET)
-	public String echecLogin(ModelMap model){
+
+	@RequestMapping(value = "/echec", method = RequestMethod.GET)
+	public String echecLogin(ModelMap model) {
 		model.addAttribute("erreur", "true");
 		return "login";
 	}
-	
-	public String get(){
+
+	public String get() {
 		return null;
-		
+
+	}
+
+	public String add() {
+		return null;
+
 	}
 }
