@@ -231,7 +231,7 @@ public class AuthenticationController {
 //		model.addAttribute("cListe", listeCategories);
 //		model.addAttribute("lcListe", monPanier.getListLigneCommandes());
 //		model.addAttribute("panierTot", monPanier.getTotal());
-//
+///
 //		return "welcome";
 //	}
 

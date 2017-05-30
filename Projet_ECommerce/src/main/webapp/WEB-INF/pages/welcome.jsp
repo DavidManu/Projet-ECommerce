@@ -183,7 +183,7 @@
 			class="btn btn-default btn-xl sr-button">Valider la commande</a>
 
 	</div>
-
+<!-- b -->
 
 	<div class="navbar-fixed-bottom"
 		style="background-color: #662200; box-shadow: 10px 10px 5px #888888; color: white; font-weight: bold;">
