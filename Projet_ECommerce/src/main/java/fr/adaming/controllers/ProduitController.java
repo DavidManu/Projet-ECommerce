@@ -108,13 +108,23 @@ public class ProduitController {
 	}
 
 	@RequestMapping(value = "/insererProduit", method = RequestMethod.POST)
-	public String ajouterProduit(@ModelAttribute("mProduit") Produit pProduit, ModelMap model, BindingResult result)
-			throws Exception {
+	public String ajouterProduit(@ModelAttribute("mProduit") Produit pProduit, ModelMap model, BindingResult result,
+			MultipartFile file) throws Exception {
 
 		if (result.hasErrors()) {
 			return "afficheCreateProduitForm";
 		} else {
-			produitService.createProduit(pProduit);
+			if (!file.isEmpty()) {
+				pProduit.setPhoto(file.getBytes());
+			}
+
+			if (pProduit.getIdProduit() == 0) {
+
+				produitService.createProduit(pProduit);
+			}else{
+				
+				produitService.updateProduit(pProduit);
+			}
 			List<Produit> listeProduits = produitService.getAllProduit();
 			model.addAttribute("pListe", listeProduits);
 			return "produits";

@@ -32,9 +32,10 @@
 	<table width="100%" cellpadding="6" style="text_align: center">
 		<tr style="text-align: center; background-color: grey; color: white">
 			<form:form action="insererProduit" method="POST"
-				modelAttribute="mProduit">
+				modelAttribute="mProduit"  enctype="multipart/form-data">
 
 				<!-- 		<table width="100%"> -->
+				<td><form:input type="hidden" path="idProduit" /></td>
 				<td>Description:<form:input path="description" /> <form:errors
 						path="description" cssStyle="color:red"></form:errors> <br />
 				</td>
@@ -79,7 +80,7 @@
 				<!-- 							<option disabled>Selectionner une catégorie</option> -->
 				<%-- <							<c:forEach var="categorie" items="${cListe}"> --%>
 				<%-- 								<option>${categorie.nomCategorie}</option> --%>
-				<!-- 							</c:forEach> -->
+				<%--							</c:forEach> --%>
 				<%-- 						</form:select> --%>
 				<!-- 					</div> -->
 				<!-- 				</td> -->

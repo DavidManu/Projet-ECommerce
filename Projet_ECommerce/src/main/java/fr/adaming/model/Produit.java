@@ -25,6 +25,7 @@ public class Produit {
 	private double prix;
 	private int quantite;
 	private boolean selectionne;
+	
 	@Lob
 	private byte[] photo;
 
