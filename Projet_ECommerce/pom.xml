@@ -40,7 +40,7 @@
 			<version>${hibernate.version}</version>
 		</dependency>
 
-		<!-- DB -->
+		<!-- DBB -->
 		<!-- commons-dbcp -->
 		<dependency>
 			<groupId>commons-dbcp</groupId>
