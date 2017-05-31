@@ -70,7 +70,7 @@ public class ProduitDaoImpl implements IProduitDao {
 
 		Produit produit_rec = (Produit) s.get(Produit.class, id);
 		return produit_rec;
-	}// Commit
+	}
 
 	/**
 	 * Creer un produit

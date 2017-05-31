@@ -57,7 +57,7 @@ public class ProduitServiceImpl implements IProduitService {
 	public Produit getOneProduit(long id) {
 		return produitDao.getOneProduit(id);
 	}
-	// Commit
+
 	@Override
 	public Produit createProduit(Produit p) {
 		return produitDao.createProduit(p);

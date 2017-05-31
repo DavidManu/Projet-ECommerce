@@ -23,4 +23,3 @@ public interface IProduitDao {
 	public List<Produit> getAllProduitsSelectionnes();
 
 }
-//Commit
