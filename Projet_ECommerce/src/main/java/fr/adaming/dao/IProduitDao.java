@@ -8,15 +8,15 @@ public interface IProduitDao {
 
 	public List<Produit> getAllProduit();
 
-	public Produit getOneProduit(int id);
+	public Produit getOneProduit(long id);
 
 	public Produit createProduit(Produit p);
 
-	public String deleteProduit(int id);
+	public String deleteProduit(long id);
 
 	public Produit updateProduit(Produit p);
 
-	public List<Produit> getProduitsParCategorie(int id);
+	public List<Produit> getProduitsParCategorie(long id);
 
 	public List<Produit> getProduitsParMotCle(String motcle);
 

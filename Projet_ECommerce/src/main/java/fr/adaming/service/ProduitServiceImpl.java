@@ -54,7 +54,7 @@ public class ProduitServiceImpl implements IProduitService {
 	}
 
 	@Override
-	public Produit getOneProduit(int id) {
+	public Produit getOneProduit(long id) {
 		return produitDao.getOneProduit(id);
 	}
 	// Commit
@@ -64,7 +64,7 @@ public class ProduitServiceImpl implements IProduitService {
 	}
 
 	@Override
-	public String deleteProduit(int id) {
+	public String deleteProduit(long id) {
 		return produitDao.deleteProduit(id);
 
 	}
@@ -76,7 +76,7 @@ public class ProduitServiceImpl implements IProduitService {
 	}
 
 	@Override
-	public List<Produit> getProduitsParCategorie(int id) {
+	public List<Produit> getProduitsParCategorie(long id) {
 
 		return produitDao.getProduitsParCategorie(id);
 	}

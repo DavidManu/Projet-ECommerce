@@ -99,18 +99,26 @@
 			</div>
 		</header>
 		<br /> <br />
-		<h4>Selectionnez ici la categorie du produit que vous recherchez:</h4>
+		<h4>Entrez ici un mot clé:</h4>
 		<br />
 
+		<!-- chercher par mot clé -->
+		<div class="input-group">
+			<input type="text" class="form-control" placeholder="Search">
+			<div class="input-group-btn">
+			<a href=""></a>
+				<button class="btn btn-default" type="submit">
+					<i class="glyphicon glyphicon-search"></i>
+				</button>
+			</div>
+		</div>
+
+
+		<h4>Selectionnez ici la categorie du produit que vous recherchez:</h4>
+		<br />
 		<form>
 			<select class="selectpicker form-control">
-				<option data-icon="glyphicon-heart">Tous</option>
-				<option data-icon="glyphicon-heart"
-					<a href="${pageContext.request.contextPath}/categorie/listeCategorie">Musique</a>></option>
-				<option data-icon="glyphicon-heart">Jeux</option>
-				<option data-icon="glyphicon-heart">Sport</option>
-				<option data-icon="glyphicon-heart">Livres</option>
-				<option>Toutes</option>
+				<%-- 				<option><a href="${pageContext.request.contextPath}/categorie/listeCategorie">Toutes</a></option> --%>
 				<c:forEach var="categorie" items="${cListe}">
 					<option>${categorie.nomCategorie}</option>
 				</c:forEach>
@@ -122,7 +130,6 @@
 		<table width="100%" cellpadding="6" style="background-color: white">
 			<tr
 				style="background-color: #662200; color: white; text-align: center">
-				<th>Selection</th>
 				<th>ID</th>
 				<th>Categorie</th>
 				<th>Designation</th>
@@ -130,12 +137,11 @@
 				<th>Quantite</th>
 				<th>Description</th>
 				<th>Photo</th>
-				<th>Commande</th>
+				<th>Ajout</th>
 
 			</tr>
 			<c:forEach var="produit" items="${pListe}">
 				<tr>
-					<td>${produit.selectionne}</td>
 					<td>${produit.idProduit}</td>
 					<td>${produit.categorie.idCategorie}</td>
 					<td>${produit.designation}</td>
@@ -183,7 +189,7 @@
 			class="btn btn-default btn-xl sr-button">Valider la commande</a>
 
 	</div>
-<!-- b -->
+	<!-- b -->
 
 	<div class="navbar-fixed-bottom"
 		style="background-color: #662200; box-shadow: 10px 10px 5px #888888; color: white; font-weight: bold;">

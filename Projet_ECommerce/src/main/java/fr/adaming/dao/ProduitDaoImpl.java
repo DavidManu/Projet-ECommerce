@@ -65,7 +65,7 @@ public class ProduitDaoImpl implements IProduitDao {
 	 * Recuperation d'un produit
 	 */
 	@Override
-	public Produit getOneProduit(int id) {
+	public Produit getOneProduit(long id) {
 		Session s = sf.getCurrentSession();
 
 		Produit produit_rec = (Produit) s.get(Produit.class, id);
@@ -86,7 +86,7 @@ public class ProduitDaoImpl implements IProduitDao {
 	 * Supprimer un produit
 	 */
 	@Override
-	public String deleteProduit(int id) {
+	public String deleteProduit(long id) {
 		Session s = sf.getCurrentSession();
 		Produit produit_rec = (Produit) s.get(Produit.class, id);
 		s.delete(produit_rec);
@@ -112,7 +112,7 @@ public class ProduitDaoImpl implements IProduitDao {
 	}
 
 	@Override
-	public List<Produit> getProduitsParCategorie(int id) {
+	public List<Produit> getProduitsParCategorie(long id) {
 		Session s = sf.getCurrentSession();
 		String req = "SELECT p FROM Produit AS p where p.categorie.id=:pidCategorie";
 		Query query = s.createQuery(req);
