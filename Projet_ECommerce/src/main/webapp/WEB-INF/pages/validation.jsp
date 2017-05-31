@@ -130,9 +130,7 @@
 			</c:forEach>
 		</table>
 		<p>Prix total: ${panierTot} euros</p>
-		<a
-			href="${pageContext.request.contextPath}/authentication/validerCommande/"
-			class="btn btn-default btn-xl sr-button">Valider la commande</a>
+
 
 	</div>
 

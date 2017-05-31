@@ -8,11 +8,11 @@ public interface ICategorieDao {
 
 	public List<Categorie> getAllCategorie();
 
-	public Categorie getOneCategorie(int id);
+	public Categorie getOneCategorie(long id);
 
 	public Categorie createCategorie(Categorie c);
 
-	public String deleteCategorie(int id);
+	public String deleteCategorie(long id);
 
 	public Categorie updateCategorie(Categorie c);
 

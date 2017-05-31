@@ -114,9 +114,9 @@ public class ProduitDaoImpl implements IProduitDao {
 	@Override
 	public List<Produit> getProduitsParCategorie(long id) {
 		Session s = sf.getCurrentSession();
-		String req = "SELECT p FROM Produit AS p where p.categorie.id=:pidCategorie";
+		String req = "SELECT p FROM Produit AS p where p.categorie.idCategorie=:pidCategorie";
 		Query query = s.createQuery(req);
-		query.setParameter("idCategorie", id);
+		query.setParameter("pidCategorie", id);
 		return query.list();
 	}
 

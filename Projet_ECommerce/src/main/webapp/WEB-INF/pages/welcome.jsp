@@ -114,16 +114,22 @@
 		</div>
 
 
-		<h4>Selectionnez ici la categorie du produit que vous recherchez:</h4>
-		<br />
-		<form>
-			<select class="selectpicker form-control">
-				<%-- 				<option><a href="${pageContext.request.contextPath}/categorie/listeCategorie">Toutes</a></option> --%>
-				<c:forEach var="categorie" items="${cListe}">
-					<option>${categorie.nomCategorie}</option>
-				</c:forEach>
-			</select>
-		</form>
+
+<div class="dropdown">
+        <button class="btn btn-danger dropdown-toggle" type="button"
+            id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="true">
+            SELECTIONNE UNE CATEGORIE <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <c:forEach items="${cListe}" var="cat">
+                <li><a
+                    href="${pageContext.request.contextPath}/authentication/produitsByCat/${cat.idCategorie}">
+                </a></li>
+            </c:forEach>
+        </ul>
+    </div>
+
 
 		<br /> <br />
 		<h4>Voici les produits disponibles:</h4>

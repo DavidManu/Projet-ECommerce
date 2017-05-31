@@ -21,7 +21,7 @@ public class Categorie {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_ca")
-	private int idCategorie;
+	private long idCategorie;
 	private String nomCategorie;
 	@Lob
 	private byte[] photo;
@@ -72,7 +72,7 @@ public class Categorie {
 	/**
 	 * @return the idCategorie
 	 */
-	public int getIdCategorie() {
+	public long getIdCategorie() {
 		return idCategorie;
 	}
 
