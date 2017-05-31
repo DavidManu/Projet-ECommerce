@@ -64,7 +64,7 @@ public class AuthenticationController {
 	Panier monPanier = new Panier();
 
 	/**
-	 * @return the monPanier
+	 * @return the monPanier bla
 	 */
 	public Panier getMonPanier() {
 		return monPanier;
